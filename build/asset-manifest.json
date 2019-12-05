@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.843e872b.chunk.css",
-  "main.js": "/static/js/main.1c20213d.chunk.js",
-  "main.js.map": "/static/js/main.1c20213d.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-  "static/js/2.55013f47.chunk.js": "/static/js/2.55013f47.chunk.js",
-  "static/js/2.55013f47.chunk.js.map": "/static/js/2.55013f47.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.8cd9087ce93d4ec01411c095956b14f5.js": "/precache-manifest.8cd9087ce93d4ec01411c095956b14f5.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/main.843e872b.chunk.css.map": "/static/css/main.843e872b.chunk.css.map",
-  "static/media/logo.svg": "/static/media/logo.75007ccf.svg"
+  "main.css": "/lexia-web/static/css/main.843e872b.chunk.css",
+  "main.js": "/lexia-web/static/js/main.09a4fdd5.chunk.js",
+  "main.js.map": "/lexia-web/static/js/main.09a4fdd5.chunk.js.map",
+  "runtime~main.js": "/lexia-web/static/js/runtime~main.a084173c.js",
+  "runtime~main.js.map": "/lexia-web/static/js/runtime~main.a084173c.js.map",
+  "static/js/2.55013f47.chunk.js": "/lexia-web/static/js/2.55013f47.chunk.js",
+  "static/js/2.55013f47.chunk.js.map": "/lexia-web/static/js/2.55013f47.chunk.js.map",
+  "index.html": "/lexia-web/index.html",
+  "precache-manifest.3101f0dc6317acfee79f53d0f44ba359.js": "/lexia-web/precache-manifest.3101f0dc6317acfee79f53d0f44ba359.js",
+  "service-worker.js": "/lexia-web/service-worker.js",
+  "static/css/main.843e872b.chunk.css.map": "/lexia-web/static/css/main.843e872b.chunk.css.map",
+  "static/media/logo.svg": "/lexia-web/static/media/logo.75007ccf.svg"
 }
