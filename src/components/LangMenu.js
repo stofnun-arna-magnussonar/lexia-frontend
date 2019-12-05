@@ -30,7 +30,7 @@ class LangMenu extends Component {
 			langEls.push(<Link key={langList[lang].code} 
 				to={'/'+langList[lang].code+'/'} 
 				className={langList[lang].code == window.currentLang ? 'active' : ''} 
-			><img className="button-flag" src={'/img/flags/'+langList[lang].code.toUpperCase()+'.png'}/> {langList[lang].name}</Link>);
+			><img className="button-flag" src={'img/flags/'+langList[lang].code.toUpperCase()+'.png'}/> {langList[lang].name}</Link>);
 		}
 
 		return (
