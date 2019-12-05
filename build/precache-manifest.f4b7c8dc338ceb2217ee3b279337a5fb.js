@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/lexia-web/static/css/main.843e872b.chunk.css"
   },
   {
-    "revision": "95d67120699e27b83cfb6889a2e660a8",
+    "revision": "4afe5cbe29ba9de5965fd53ca49661cf",
     "url": "/lexia-web/index.html"
   }
 ];
