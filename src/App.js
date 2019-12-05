@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 import SearchBox from './components/SearchBox';
 import Frontpage from './components/Frontpage';
@@ -167,7 +167,7 @@ class App extends Component {
 
 
 		return (
-			<BrowserRouter ref="router">
+			<Router ref="router">
 				<React.Fragment>
 
 					<div className={'app-wrapper'}>
@@ -256,7 +256,7 @@ class App extends Component {
 					}
 
 				</React.Fragment>
-			</BrowserRouter>
+			</Router>
 		);
 	}
 }

@@ -148,7 +148,7 @@ class TermViewContainer extends Component {
 								localStorage.setItem('selected-lang', lang);
 							}
 						}>
-						<img className="button-flag" src={'/img/flags/'+lang+'.png'} />
+						<img className="button-flag" src={'img/flags/'+lang+'.png'} />
 
 						<span> {islexHelper.tungumal[lang].name}</span>
 					</Link>

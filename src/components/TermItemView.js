@@ -186,7 +186,7 @@ class TermItemView extends Component {
 						return <TagName key={daemiTranslation.itid} className={'daemi-translation dict-jafn'+(daemiTranslation.skil == '/' || daemiTranslation.skil == ';/' ? ' break-next' : '')}>
 							{
 								displayLang &&
-								<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
+								<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
 							}
 							{daemiTranslation.texti}
 						</TagName>
@@ -208,7 +208,7 @@ class TermItemView extends Component {
 			el = <div data-type={type} data-itid={dataItem.itid} className={'dict-item '+(type == 'SOSTÆÐA' || type == 'OSTÆÐA' || type == 'OSAMB' ? 'dict-osamband' : 'dict-sohaus')+(this.props.firstLevel ? ' first-level' : '')}>
 				{
 					displayLang &&
-					<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
+					<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
 				}
 				<div className={(type == 'SOSTÆÐA' || type == 'OSTÆÐA' || type == 'OSAMB' ? 'osamband' : 'sohaus')}>{dataItem.texti}</div>
 				{
@@ -246,7 +246,7 @@ class TermItemView extends Component {
 				<TagName data-type={type} data-itid={dataItem.itid} className={'dict-item dict-jafn'+(this.props.firstLevel ? ' first-level' : '')+(dataItem.skil == '/' || dataItem.skil == ';/' ? ' break-next' : '')}>
 					{
 						displayLang &&
-						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
+						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
 					}
 
 					<span title={titleText || null}>{dataItem.texti}
@@ -319,7 +319,7 @@ class TermItemView extends Component {
 				<p>
 					{
 						displayLang && islexHelper.tungumal[displayLang] &&
-						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
+						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
 					}
 
 					{type}: {dataItem.texti}
