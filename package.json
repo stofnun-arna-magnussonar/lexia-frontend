@@ -2,7 +2,7 @@
   "name": "islex-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://nidhoggur.rhi.hi.is/lexia-web",
+  "homepage": "http://nidhoggur.rhi.hi.is/lexia",
   "dependencies": {
     "eventbusjs": "^0.2.0",
     "promise-polyfill": "^8.1.3",
