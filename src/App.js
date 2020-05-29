@@ -130,7 +130,7 @@ class App extends Component {
 	render() {
 		let currentLang = window.currentLang || 'is';
 
-		let currentLangIcon = <img className="current-lang-icon" src={'/img/flags/'+currentLang.toUpperCase()+'.png'} />;
+		let currentLangIcon = <img className="current-lang-icon" src={'img/flags/'+currentLang.toUpperCase()+'.png'} />;
 
 		let langCodes = [];
 
@@ -175,9 +175,9 @@ class App extends Component {
 						<div className="header">
 
 							<div className="container">
-								
+
 								<img src={logo} className="float-right hidden-mobile-up" />
-								
+
 								<h1 className="h2">
 									<img src={logo} className="mr-4 hidden-mobile" />
 									<span>{window.l('LEXIA')}<small>{window.l('-orðabókin')}</small></span>
@@ -185,7 +185,7 @@ class App extends Component {
 								</h1>
 
 								<PageMenu className="hidden-mobile" lang={currentLang} />
-	
+
 							</div>
 
 						</div>
@@ -227,7 +227,7 @@ class App extends Component {
 
 					<div className={'app-menu'+(this.state.menuOpen ? ' open' : '')} ref="menuContent">
 						<div className="container">
-	
+
 							<button className="btn btn-link float-right" onClick={
 								function() {
 									this.setState({
@@ -239,14 +239,14 @@ class App extends Component {
 									<div className="icon-before-after" />
 								</div>
 							</button>
-	
+
 							<h5 className="mb-4 pt-2">ISLEX</h5>
 
 							<PageMenu className="hidden-mobile-up" />
 
 							<h6>{window.l('Tungumál')}</h6>
 							<LangMenu />
-	
+
 						</div>
 					</div>
 					{
