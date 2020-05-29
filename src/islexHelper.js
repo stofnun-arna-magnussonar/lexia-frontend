@@ -7,10 +7,10 @@ export default {
 			code: 'fr',
 			name: 'Franska'
 		},
-		'TYS': {
+		/*'TYS': {
 			code: 'de',
 			name: 'Þýska'
-		}
+		}*/
 	},
 
 	langCodes: [
@@ -18,7 +18,7 @@ export default {
 	],
 
 	specialChars: [
-		'á', 'ð', 'é', 'í', 'ó', 'ú', 'ý', 'þ', 'æ', 'ö', 'ä', 'å', 'ø'
+		'á', 'ð', 'é', 'í', 'ó', 'ú', 'ý', 'þ', 'æ', 'ö', 'à', 'â', 'ç', 'è', 'ê', 'ë', 'ï', 'î', 'ô', 'ù', 'û', 'ü', 'ÿ', 'œ'
 	],
 
 	formatOfl: function(ofl) {

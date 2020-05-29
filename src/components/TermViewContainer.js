@@ -60,7 +60,7 @@ class TermViewContainer extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		// Athuga hvort breytur hafi breyst og hvort component eigi að uppfærast
 
-		if (this.props.match && this.props.match.params.entry_id && 
+		if (this.props.match && this.props.match.params.entry_id &&
 			(
 				prevProps.match.params.entry_id != this.props.match.params.entry_id ||
 				this.props.match.params.lang != prevProps.match.params.lang
@@ -141,7 +141,7 @@ class TermViewContainer extends Component {
 
 			for (let lang in islexHelper.tungumal) {
 				langButtons.push(<span key={lang} className="nav-item">
-					<Link className={'nav-link'+(this.props.match.params.lang && this.props.match.params.lang == lang ? ' active' : '')} 
+					<Link className={'nav-link'+(this.props.match.params.lang && this.props.match.params.lang == lang ? ' active' : '')}
 						to={'/'+currentLang+'/ord/'+this.props.match.params.entry_id+'/tungumal/'+lang}
 						onClick={
 							function() {
@@ -156,7 +156,7 @@ class TermViewContainer extends Component {
 			}
 
 			langButtons.push(<span key="all" className="nav-item">
-				<Link className={'nav-link'+(!this.props.match.params.lang || this.props.match.params.lang == '' ? ' active' : '')} 
+				<Link className={'nav-link'+(!this.props.match.params.lang || this.props.match.params.lang == '' ? ' active' : '')}
 					to={'/'+currentLang+'/ord/'+this.props.match.params.entry_id}>
 					{window.l('Allar')}
 				</Link>
@@ -172,12 +172,17 @@ class TermViewContainer extends Component {
 							this.state.data &&
 							<React.Fragment>
 
+								{/*
+
+								Takkar til að skipta á milli orðabóka
+
 								<div className="nav nav-pills">
 									<div className="navbar-text text-secondary mr-4 mb-2 d-none d-sm-block">{window.l('Orðabók')}: </div>
 									{
 										langButtons
 									}
 								</div>
+								*/}
 
 								<div className={'dictionary-entry card flex-grow-1'}>
 									<div className={'card-body'}>

@@ -78,7 +78,6 @@ class SearchBox extends Component {
 				searchBoxInput: event.key
 			});
 			this.refs.searchInput.refs.inputField.focus();
-			console.log(event);
 		}
 	}
 
@@ -171,25 +170,25 @@ class SearchBox extends Component {
 
 		return (
 			<div className="form-group row">
-				<div className="col-9 col-sm-10 col-md-11"> 
-					<AutocompleteInput inputClassName="form-control" 
+				<div className="col-9 col-sm-10 col-md-11">
+					<AutocompleteInput inputClassName="form-control"
 						ref="searchInput"
 						responseDataField="results"
 						searchUrl={config.apiRoot+'/api/es/flettur/?fletta=$s*&simple=true'}
-						onChange={this.inputChangeHandler} 
-						inputName="searchBoxInput" 
-						value={this.state.searchBoxInput} 
-						type="text" 
-						onEnter={this.executeSearch} 
+						onChange={this.inputChangeHandler}
+						inputName="searchBoxInput"
+						value={this.state.searchBoxInput}
+						type="text"
+						onEnter={this.executeSearch}
 						onItemSelect={this.searchBoxItemSelectHandler}
 						placeholder={window.l('Leitarorð')}
 						minChars={2}
 						valueField="fletta"
 						selectedItemClass="active"
 						onFocus={this.inputFocusHandler}
-						disableAutoFill={false} 
+						disableAutoFill={false}
 						headerText={window.l('Ýttu á enter til að leita eða veldu orðasafn úr lista til að sjá færslu.')}
-						listLabelFormatFunc={this.formatAutocompleteListItems} 
+						listLabelFormatFunc={this.formatAutocompleteListItems}
 					/>
 					<div className="search-helpers">{specialCharLinks}</div>
 				{
@@ -199,7 +198,7 @@ class SearchBox extends Component {
 						placeholder="Leit í orðabanka"
 						type="text"
 						value={this.state.searchBoxInput}
-						onKeyPress={this.inputKeyPressHandler} 
+						onKeyPress={this.inputKeyPressHandler}
 						onChange={this.inputChangeHandler}
 					/>
 					*/
