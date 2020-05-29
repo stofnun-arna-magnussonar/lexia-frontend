@@ -1,6 +1,6 @@
 export default {
-	siteTitle: 'ISLEX',
-	site: 'islex',
+	siteTitle: 'LEXIA',
+	site: 'lexia',
 	pageSize: 50,
 
 	apiRoot: process.env.REACT_APP_API_ROOT,
