@@ -7,7 +7,7 @@ class PageMenu extends Component {
 	constructor(props) {
 		super(props);
 
-		this.url = config.apiRoot+'/api/pages/';
+		this.url = config.islexRoot+'/api/pages/';
 
 		this.state = {
 			listData: []

@@ -8,7 +8,7 @@ class PageView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.url = config.apiRoot+'/api/pages/';
+		this.url = config.islexRoot+'/api/pages/';
 
 		this.htmlContentClickHandler = this.htmlContentClickHandler.bind(this);
 		this.languageChangedHandler = this.languageChangedHandler.bind(this);
