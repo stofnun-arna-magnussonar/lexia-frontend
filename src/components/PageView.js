@@ -121,14 +121,6 @@ class PageView extends Component {
 
 		return (
 			<div className={'card content-container manual-init'+(this.state.initialized ? ' initialized' : '')}>
-				<div className="page-content card-body">
-					<p className="lead">Velkomin á heimasíðu íslensk-franskrar orðabókar</p>
-					<p>LEXÍA er ný veforðabók milli íslensku og frönsku sem verið er að vinna að. Orðabókin er unnin í samstarfi Stofnunar Árna Magnússonar í íslenskum fræðum (SÁM) og Stofnunar Vigdísar Finnbogadóttur í erlendum tungumálum (SVF). Íslenski hluti verksins hefur verið mótaður hjá SÁM sem og gagnagrunnur og önnur tæknivinna við orðabókina. SVF hefur umsjón með franska markmálinu.</p>
-
-					<p>Grundvöllurinn að LEXÍU er margmála orðabókin ISLEX sem var unnin hjá SÁM.</p>
-
-					<p>Athugið að orðabókin er enn í vinnslu og því vantar víða þýðingar á frönsku.</p>
-				</div>
 				{
 					dataItem &&
 
