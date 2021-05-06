@@ -29,16 +29,22 @@ class LangMenu extends Component {
 		for (let lang in langList) {
 			langEls.push(<Link key={langList[lang].code} 
 				to={'/'+langList[lang].code+'/'} 
-				className={langList[lang].code == window.currentLang ? 'active' : ''} 
-			><img className="button-flag" src={'img/flags/'+langList[lang].code.toUpperCase()+'.png'}/> {langList[lang].name}</Link>);
+				className={langList[lang].code == window.currentLang ? 'active' : null} 
+			><img className="button-flag" src={'/img/flags/'+langList[lang].code.toUpperCase()+'.png'}/> {langList[lang].langMenuName || langList[lang].name}</Link>);
 		}
 
 		return (
-			<div className="menu-links">
-				{
-					langEls
-				}
-			</div>
+			this.props.inline ?
+				<React.Fragment>
+					{
+						langEls
+					}
+				</React.Fragment> :
+				<div className="menu-links lang-menu">
+					{
+						langEls
+					}
+				</div>
 		);
 	}
 }

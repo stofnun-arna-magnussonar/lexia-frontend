@@ -6,19 +6,14 @@ const defaultLang = 'is';
 
 let langData = {
 	'is': {},
-	'dk': {},
-	'no': {},
-	'nn': {},
-	'se': {},
-	'fo': {},
-	'fi': {}
+	'fr': {}
 }
 
 window.langData = langData;
 
 export default {
 	collect: false,
-	
+
 	setCurrentLang: function(lang) {
 		if (!langData[lang]) {
 			return;

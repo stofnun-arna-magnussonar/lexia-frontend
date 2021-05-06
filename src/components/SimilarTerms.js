@@ -83,7 +83,7 @@ class SimilarTerms extends Component {
 								{item.fletta} {islexHelper.formatOfl(item.ofl)}</Link>
 					})
 				}
-				<div className="dict-info alert alert-info">{window.l('Færslurnar eru nokkurs konar samheiti sem fengin eru með reiknireglum með jafnheitum markmálanna.')}</div>
+				<div className="dict-info alert alert-info">{window.l('Færslurnar eru nokkurs konar samheiti sem fengin eru með vélrænum hætti í gegnum markmálin.')}</div>
 			</div>
 		);
 	}

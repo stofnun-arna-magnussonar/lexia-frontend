@@ -6,7 +6,7 @@ class ContactForm extends Component {
 		super(props);
 
 		this.grecaptchaKey = '6Ldu6a4UAAAAANsP74uOE6741n4rw0jNDRJkmpev';
-		this.apiUrl = 'http://ritaskra.arnastofnun.is/api/fyrirspurnir/fyrirspurn/';
+		this.apiUrl = '//ritaskra.arnastofnun.is/api/fyrirspurnir/fyrirspurn/';
 
 		this.formInputChangeHandler = this.formInputChangeHandler.bind(this);
 		this.sendButtonClickHandler = this.sendButtonClickHandler.bind(this);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import AutocompleteInput from './AutocompleteInput';
+import ToggleSwitch from './ToggleSwitch';
 import _ from 'underscore';
 
 import config from "./../config";
@@ -19,7 +20,8 @@ class SearchBox extends Component {
 		this.documentKeyDownHandler = this.documentKeyDownHandler.bind(this);
 
 		this.state = {
-			searchBoxInput: ''
+			searchBoxInput: '',
+			textaleitInput: false
 		};
 	}
 
@@ -30,9 +32,11 @@ class SearchBox extends Component {
 	}
 
 	inputChangeHandler(event) {
+		let value = event.target.type && event.target.type == 'checkbox' ? event.target.checked : event.target.value;
+
 		var stateObj = {};
 
-		stateObj[event.target.name] = event.target.value;
+		stateObj[event.target.name] = value;
 
 		this.setState(stateObj);
 	}
@@ -58,10 +62,21 @@ class SearchBox extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		let stateObj = this.state;
+		let stateChanged = false;
+
 		if (this.props.searchString != prevProps.searchString) {
-			this.setState({
-				searchBoxInput: this.props.searchString
-			});
+			stateObj.searchBoxInput = this.props.searchString;
+			stateChanged = true;
+		}
+
+		if (this.props.leitarsvid != prevProps.leitarsvid) {
+			stateObj.textaleitInput = this.props.leitarsvid == 'texti';
+			stateChanged = true;
+		}
+
+		if (stateChanged) {
+			this.setState(stateObj);
 		}
 	}
 
@@ -94,7 +109,7 @@ class SearchBox extends Component {
 
 	executeSearch() {
 		let currentLang = window.currentLang || 'is';
-		this.props.history.push('/'+currentLang+'/leit/'+this.state.searchBoxInput);
+		this.props.history.push('/'+currentLang+'/leit/'+this.state.searchBoxInput+(this.state.textaleitInput ? '/leitarsvid/texti' : ''));
 		this.refs.searchInput.refs.inputField.select();
 	}
 
@@ -164,33 +179,44 @@ class SearchBox extends Component {
 
 				this.setState({
 					searchBoxInput: this.state.searchBoxInput+char
-				});
+				}, function() {
+					this.refs.searchInput.refs.inputField.focus();
+
+					setTimeout(function() {
+						this.refs.searchInput.refs.inputField.selectionStart = this.state.searchBoxInput.length;
+						this.refs.searchInput.refs.inputField.selectionEnd = this.state.searchBoxInput.length;
+					}.bind(this), 1);
+				}.bind(this));
 			}.bind(this)}>{char}</a>
 		}.bind(this));
 
 		return (
 			<div className="form-group row">
-				<div className="col-9 col-sm-10 col-md-11">
-					<AutocompleteInput inputClassName="form-control"
+				<div className="col-9 col-sm-10 col-md-11"> 
+					<AutocompleteInput inputClassName="form-control" 
 						ref="searchInput"
 						responseDataField="results"
 						searchUrl={config.apiRoot+'/api/es/flettur/?fletta=$s*&simple=true'}
-						onChange={this.inputChangeHandler}
-						inputName="searchBoxInput"
-						value={this.state.searchBoxInput}
-						type="text"
-						onEnter={this.executeSearch}
+						onChange={this.inputChangeHandler} 
+						inputName="searchBoxInput" 
+						value={this.state.searchBoxInput} 
+						type="text" 
+						onEnter={this.executeSearch} 
 						onItemSelect={this.searchBoxItemSelectHandler}
 						placeholder={window.l('Leitarorð')}
 						minChars={2}
 						valueField="fletta"
 						selectedItemClass="active"
 						onFocus={this.inputFocusHandler}
-						disableAutoFill={false}
-						headerText={window.l('Ýttu á enter til að leita eða veldu orðasafn úr lista til að sjá færslu.')}
-						listLabelFormatFunc={this.formatAutocompleteListItems}
+						disableAutoFill={false} 
+						headerText={'&nbsp;'}
+						listLabelFormatFunc={this.formatAutocompleteListItems} 
 					/>
 					<div className="search-helpers">{specialCharLinks}</div>
+
+					<div className="form-check float-right">
+						<ToggleSwitch label="Leita í texta" onChange={this.inputChangeHandler} name="textaleitInput" value={this.state.textaleitInput} />
+					</div>
 				{
 					/*
 					<input name="searchBoxInput"
@@ -198,7 +224,7 @@ class SearchBox extends Component {
 						placeholder="Leit í orðabanka"
 						type="text"
 						value={this.state.searchBoxInput}
-						onKeyPress={this.inputKeyPressHandler}
+						onKeyPress={this.inputKeyPressHandler} 
 						onChange={this.inputChangeHandler}
 					/>
 					*/

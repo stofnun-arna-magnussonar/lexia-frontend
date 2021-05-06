@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 import config from './../config';
+import islexHelper from './../islexHelper';
 import TermView from './TermView';
 import SearchResultsItem from './SearchResultsItem';
 import CollapsibleCard from './CollapsibleCard';
@@ -32,7 +33,8 @@ class SearchResultsList extends Component {
 			prevProps.match.params.searchString != this.props.match.params.searchString ||
 			prevProps.match.params.ordabok != this.props.match.params.ordabok ||
 			prevProps.match.params.order != this.props.match.params.order ||
-			prevProps.match.params.page != this.props.match.params.page
+			prevProps.match.params.page != this.props.match.params.page ||
+			prevProps.match.params.leitarsvid != this.props.match.params.leitarsvid
 		) {
 			this.fetchData();
 		}
@@ -47,8 +49,7 @@ class SearchResultsList extends Component {
 
 		// Sæki gögn til APA
 		let urlParams = [
-			'simple=true',
-			'showQuery=true'
+			'simple=true'
 		];
 		if (this.props.match.params.searchString) {
 			urlParams.push('leit='+(this.props.match.params.searchString.split('_').join('?')));
@@ -59,11 +60,24 @@ class SearchResultsList extends Component {
 		if (this.props.match.params.ofl) {
 			urlParams.push('ofl='+this.props.match.params.ofl);
 		}
+		if (this.props.match.params.rnum) {
+			urlParams.push('rnum='+this.props.match.params.rnum);
+		}
 		if (this.props.match.params.ordabok) {
 			urlParams.push('ordabok='+this.props.match.params.ordabok || '');
 		}
 		if (this.props.match.params.page) {
 			urlParams.push('offset='+((this.props.match.params.page-1)*config.pageSize) || '');
+		}
+
+		if (this.props.match.params.leitarsvid && this.props.match.params.leitarsvid == 'texti') {
+			urlParams.push('searchText=true');
+		}
+
+		let currentLang = window.currentLang || 'is';
+
+		if (currentLang != 'is' && islexHelper.getIslexLangCode(currentLang)) {
+			urlParams.push('ordabok='+islexHelper.getIslexLangCode(currentLang));
 		}
 
 		fetch(this.url+'?'+urlParams.join('&'))
@@ -74,8 +88,8 @@ class SearchResultsList extends Component {
 				let currentLang = window.currentLang || 'is';
 
 				this.fetching = false;
-				console.log(this)
-				if (json.results.length == 1 || this.props.location.search == '?synafyrstu') {
+
+				if ((json.results.length == 1 || this.props.location.search == '?synafyrstu') && !this.props.match.params.leitarsvid) {
 					let selectedLang = localStorage.getItem('selected-lang') || 'FRA';
 
 					this.props.history.replace('/'+currentLang+'/ord/'+json.results[0].flid+'/tungumal/'+selectedLang);
@@ -125,7 +139,7 @@ class SearchResultsList extends Component {
 				{
 					(currentPage*config.pageSize)-config.pageSize < this.state.total && this.props.match.params.page > 1 &&
 					<div className="d-inline-block page-itemr">
-						<Link className="page-link" to={paginationUrl+(this.props.match.params.page ? '/page/'+(parseInt(this.props.match.params.page)-1) : '')} aria-label="Previous">
+						<Link className="page-link" to={paginationUrl+(this.props.match.params.leitarsvid ? '/leitarsvid/'+this.props.match.params.leitarsvid : '')+(this.props.match.params.page ? '/page/'+(parseInt(this.props.match.params.page)-1) : '')} aria-label="Previous">
 							<span aria-hidden="true">&laquo; {window.l('Fyrri síða')}</span>
 							<span className="sr-only">{window.l('Fyrri síða')}</span>
 						</Link>
@@ -134,7 +148,7 @@ class SearchResultsList extends Component {
 				{
 					(currentPage*config.pageSize < this.state.total) &&
 					<div className="d-inline-block page-item">
-						<Link className="page-link" to={paginationUrl+(this.props.match.params.page ? '/page/'+(parseInt(this.props.match.params.page)+1) : '/page/2')} aria-label="Next">
+						<Link className="page-link" to={paginationUrl+(this.props.match.params.leitarsvid ? '/leitarsvid/'+this.props.match.params.leitarsvid : '')+(this.props.match.params.page ? '/page/'+(parseInt(this.props.match.params.page)+1) : '/page/2')} aria-label="Next">
 							<span aria-hidden="true">{window.l('Næsta síða')} &raquo;</span>
 							<span className="sr-only">{window.l('Næsta síða')}</span>
 						</Link>
@@ -153,13 +167,14 @@ class SearchResultsList extends Component {
 						<ol className="breadcrumb"><li className="breadcrumb-item active" aria-current="page">{window.l('Leitarniðurstöður fyrir')} <strong>{this.props.match.params.searchString}</strong></li></ol>
 					}
 
-					<ul className={'list-group mb-4 dictionary-list'}>
+					<table className={'list-group mb-4 dictionary-list'}>
+						<tbody>
 						{
 							this.state.listData.length > 0 ?
 							this.state.listData.map(function(item, index) {
-								return <li key={index} className="list-group-item dictionary-entry">
+								return <tr key={index} className="list-group-item dictionary-entry">
 									<SearchResultsItem order={this.props.match.params.order} data={item} />
-								</li>;
+								</tr>;
 							}.bind(this)) :
 								!this.state.found &&
 								<li key="-1" className="list-group-item text-center">
@@ -167,7 +182,8 @@ class SearchResultsList extends Component {
 									<SearchSuggestion searchString={this.props.match.params.searchString} />
 								</li>
 						}
-					</ul>
+						</tbody>
+					</table>
 				</div>
 
 				<div className="col-12 col-sm-5 col-md-3">

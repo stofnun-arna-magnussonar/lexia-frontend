@@ -23,16 +23,30 @@ class SearchResultsItem extends Component {
 			}
 		}
 
+		// Passa upp á að inner hits innihaldi ekki tvöfaldar færslur
 		if (dataItem.inner_hits && dataItem.inner_hits['text_hits'] && dataItem.inner_hits['text_hits']['hits']['hits']) {
 			dataItem.inner_hits['text_hits']['hits']['hits'] = _.uniq(dataItem.inner_hits['text_hits']['hits']['hits'], function(hitItem) {
 				return hitItem._source.texti+':'+hitItem._source.teg;
 			})
 		}
 
+		// Passa upp á að inner hits innihaldi ekki tvöfaldar færslur
 		if (dataItem.inner_hits && dataItem.inner_hits['phrase_hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits']) {
 			dataItem.inner_hits['phrase_hits']['hits']['hits'] = _.uniq(dataItem.inner_hits['phrase_hits']['hits']['hits'], function(hitItem) {
 				return hitItem._source.texti;
 			})
+		}
+
+
+		// Passa upp á að text_hits og phrase_hits innihaldi ekki sömu færslur
+		if (dataItem.inner_hits && dataItem.inner_hits['text_hits'] && dataItem.inner_hits['text_hits']['hits']['hits'] && dataItem.inner_hits['phrase_hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits']) {
+			let phraseHitsWouthoutTextHits = [];
+
+			dataItem.inner_hits['text_hits']['hits']['hits'] = _.filter(dataItem.inner_hits['text_hits']['hits']['hits'], function(item) {
+				return !_.findWhere(dataItem.inner_hits['phrase_hits']['hits']['hits'], {_id: item._id});
+			});
+
+			
 		}
 
 		let flettaEl;
@@ -45,63 +59,85 @@ class SearchResultsItem extends Component {
 
 		return (
 			<React.Fragment>
+				<td className="d-sm-block d-md-table-cell">
+					<span className="item-fletta" style={{width: '180px', display: 'inline-block'}}><Link to={'/'+currentLang+'/ord/'+dataItem.flid+'/tungumal/'+(localStorage.getItem('selected-lang') || 'FRA')}>{flettaEl} {dataItem.rnum || ''}</Link> {islexHelper.formatOfl(dataItem.ofl)}</span>
+				</td>
 
-				<Link to={'/'+currentLang+'/ord/'+dataItem.flid+'/tungumal/'+(localStorage.getItem('selected-lang') || 'FRA')}>{flettaEl} {dataItem.rnum || ''} {islexHelper.formatOfl(dataItem.ofl)}
-				{
-					dataItem.highlight && dataItem.highlight.ordmyndir && !dataItem.highlight.fletta &&
-					<div className="results-example">Orðmynd: <span className="comma-list" dangerouslySetInnerHTML={{__html: this.formatHighlightedText('[span class="d-none"]'+dataItem.highlight.ordmyndir[0]+'[/span]')}} /></div>
-				}
-				{
-					dataItem.highlight && dataItem.highlight['items.texti'] &&
-					<div className="results-example">
-						{
-							dataItem.highlight['items.texti'].map(function(textItem, index) {
-								return <div key={index} className="example-item" dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItem)}} />;
-							}.bind(this))
-						}
-					</div>
-				}
-				{
-					dataItem.inner_hits && dataItem.inner_hits['phrase_hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits'].length > 0 &&
-					<div className="results-example">
-						{
-							dataItem.inner_hits['phrase_hits']['hits']['hits'].map(function(textItem, index) {
-								console.log(textItem.highlight)
-								let textItemText = textItem.highlight && textItem.highlight['items.texti'] ? textItem.highlight['items.texti'][0] : textItem._source.texti;
-								let rawHtmlText = textItem.highlight && textItem.highlight['items.texti'];
+				<td className="d-sm-block d-md-table-cell">
+					{
+						dataItem.highlight && dataItem.highlight.ordmyndir && !dataItem.highlight.fletta &&
+						<div className="results-example ordmynd">Orðmynd: <span className="comma-list" dangerouslySetInnerHTML={{__html: this.formatHighlightedText('[span class="d-none"]'+dataItem.highlight.ordmyndir[0]+'[/span]')}} /></div>
+					}
+					{
+						dataItem.highlight && dataItem.highlight['items.texti'] &&
+						<div className="results-example">
+							{
+								dataItem.highlight['items.texti'].map(function(textItem, index) {
+									return <div key={index} className="example-item" dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItem)}} />;
+								}.bind(this))
+							}
+						</div>
+					}
+					{
+						dataItem.inner_hits && dataItem.inner_hits['phrase_hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits'].length > 0 &&
+						<div className="results-example">
+							{
+								dataItem.inner_hits['phrase_hits']['hits']['hits'].map(function(textItem, index) {
+									let textItemText = textItem.highlight && textItem.highlight['items.texti'] ? textItem.highlight['items.texti'][0] : textItem._source.texti;
+									let rawHtmlText = textItem.highlight && textItem.highlight['items.texti'];
 
-								if (rawHtmlText) {
-									return <div key={index} className="example-item" dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItemText)}}></div>;
-								}
-								else {
-									return <div key={index} className="example-item">{textItemText}</div>;
-								}
-							}.bind(this))
-						}
-					</div>
-				}
-				{
-					dataItem.inner_hits && dataItem.inner_hits['text_hits'] && dataItem.inner_hits['text_hits']['hits']['hits'] && dataItem.inner_hits['text_hits']['hits']['hits'].length > 0 &&
-					<div className="results-example">
-						{
-							dataItem.inner_hits['text_hits']['hits']['hits'].map(function(textItem, index) {
-								let lang = textItem._source.teg.indexOf('-jafn') > 0 ? textItem._source.teg.replace('-jafn', '') : null;
+									return <div key={index} className="example-item">
+										{
+											rawHtmlText &&
+											<Link to={'/'+currentLang+'/ord/'+dataItem.flid+'/tungumal/'+(localStorage.getItem('selected-lang') || 'FRA')+('?itid='+textItem._source.itid)} dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItemText)}} />
+										}
+										{
+											!rawHtmlText &&
+											<div key={index}>
+												<Link to={'/'+currentLang+'/ord/'+dataItem.flid+'/tungumal/'+(localStorage.getItem('selected-lang') || 'FRA')+('?itid='+textItem._source.itid)}>{textItemText}</Link>
+											</div>
+										}
+									</div>;
+								}.bind(this))
+							}
+						</div>
+					}
+					{
+						dataItem.inner_hits && dataItem.inner_hits['text_hits'] && dataItem.inner_hits['text_hits']['hits']['hits'] && dataItem.inner_hits['text_hits']['hits']['hits'].length > 0 &&
+						<div className="results-example">
+							{
+								dataItem.inner_hits['text_hits']['hits']['hits'].map(function(textItem, index) {
+									let lang = textItem._source.teg.indexOf('-jafn') > 0 ? textItem._source.teg.replace('-jafn', '') : 
+										textItem._source.teg.indexOf('-þýð') > 0 ? textItem._source.teg.replace('-þýð', ''): 
+										textItem._source.teg.indexOf('-skýr') > 0 ? textItem._source.teg.replace('-skýr', ''): 
+										null;
 
-								let textItemText = textItem.highlight && textItem.highlight['items.texti'] ? textItem.highlight['items.texti'][0] : textItem._source.texti;
-								let rawHtmlText = textItem.highlight && textItem.highlight['items.texti'];
+									console.log(lang)
 
-								if (rawHtmlText) {
-									return <div key={index}><img className="button-flag" src={'/img/flags/'+lang+'.png'} /> <span dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItemText)}} /></div>;
-								}
-								else {
-									return <div key={index}><img className="button-flag" src={'/img/flags/'+lang+'.png'} /> {textItem._source.texti}</div>;
-								}
-							}.bind(this))
-						}
-					</div>
-				}
-				</Link>
+									let textItemText = textItem.highlight && textItem.highlight['items.texti'] ? textItem.highlight['items.texti'][0] : textItem._source.texti;
+									let rawHtmlText = textItem.highlight && textItem.highlight['items.texti'];
 
+									if (rawHtmlText) {
+										return <div className="lang-item" key={index}>
+											{
+												lang &&
+												<React.Fragment><img className="button-flag" src={'/img/flags/'+lang+'.png'} /> </React.Fragment>
+											}
+											<Link to={'/'+currentLang+'/ord/'+dataItem.flid+'/tungumal/'+(lang || localStorage.getItem('selected-lang') || 'FRA')+('?itid='+textItem._source.itid)} dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItemText)}} /></div>;
+									}
+									else {
+										return <div className="lang-item" key={index}>
+											{
+												lang &&
+												<React.Fragment><img className="button-flag" src={'/img/flags/'+lang+'.png'} /> </React.Fragment>
+											}
+											<Link to={'/'+currentLang+'/ord/'+dataItem.flid+'/tungumal/'+(lang || localStorage.getItem('selected-lang') || 'FRA')+('?itid='+textItem._source.itid)}>{textItem._source.texti}</Link></div>;
+									}
+								}.bind(this))
+							}
+						</div>
+					}
+				</td>
 			</React.Fragment>
 		);
 	}

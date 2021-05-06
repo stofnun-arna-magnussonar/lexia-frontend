@@ -56,8 +56,8 @@ class TermItemView extends Component {
 				if (this.props.lang) {
 					if (
 						(
-							pitem.teg.toLowerCase().startsWith(this.props.lang.toLowerCase()) || 
-							pitem.teg.toLowerCase().endsWith(this.props.lang.toLowerCase()) || 
+							pitem.teg.toLowerCase().startsWith(this.props.lang.toLowerCase()) ||
+							pitem.teg.toLowerCase().endsWith(this.props.lang.toLowerCase()) ||
 							pitem.teg.startsWith('NOT-') ||
 							pitem.teg == 'OSTÆÐA' ||
 							pitem.teg == 'DÆMI' ||
@@ -113,9 +113,12 @@ class TermItemView extends Component {
 			let linkText;
 
 			if (dataItem.pitems && dataItem.pitems.length) {
-				let linkFrags = dataItem.pitems[0].texti.match(/^(\S+)\s(.*)/).slice(1)
-				linkUrl = linkFrags[0]
-				linkText = linkFrags[1];
+				try {
+					let linkFrags = dataItem.pitems[0].texti.match(/^(\S+)\s(.*)/).slice(1)
+					linkUrl = linkFrags[0]
+					linkText = linkFrags[1];
+				}
+				catch(e) {}
 			}
 
 			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-image">
@@ -136,10 +139,10 @@ class TermItemView extends Component {
 			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-merking">({dataItem.texti})</div>;
 		}
 		else if (type == 'Z-PERSÓNA') {
-			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-merking"><img style={{maxWidth: 32}} src="img/icon-person.png"/></div>;
+			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-merking"><img style={{maxWidth: 32}} src="/img/icon-person.png"/></div>;
 		}
 		else if (type == 'Z-HESTUR') {
-			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-merking"><img style={{maxWidth: 32}} src="img/icon-hestur.png"/></div>;
+			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-merking"><img style={{maxWidth: 32}} src="/img/icon-hestur.png"/></div>;
 		}
 		else if (type == 'LIÐUR') {
 			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-section">
@@ -183,10 +186,10 @@ class TermItemView extends Component {
 
 						let TagName = !this.props.lang ? 'div' : 'span';
 
-						return <TagName key={daemiTranslation.itid} className={'daemi-translation dict-jafn'+(daemiTranslation.skil == '/' || daemiTranslation.skil == ';/' ? ' break-next' : '')}>
+						return <TagName key={daemiTranslation.itid} data-itid={daemiTranslation.itid} className={'daemi-translation dict-jafn'+(daemiTranslation.skil == '/' || daemiTranslation.skil == ';/' ? ' break-next' : '')}>
 							{
 								displayLang &&
-								<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
+								<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
 							}
 							{daemiTranslation.texti}
 						</TagName>
@@ -205,10 +208,11 @@ class TermItemView extends Component {
 				displayLang = type.match(/^[A-Z]{2,3}-|-[A-Z]{2,3}$/g)[0].replace('-', '');
 			}
 
+
 			el = <div data-type={type} data-itid={dataItem.itid} className={'dict-item '+(type == 'SOSTÆÐA' || type == 'OSTÆÐA' || type == 'OSAMB' ? 'dict-osamband' : 'dict-sohaus')+(this.props.firstLevel ? ' first-level' : '')}>
 				{
 					displayLang &&
-					<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
+					<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
 				}
 				<div className={(type == 'SOSTÆÐA' || type == 'OSTÆÐA' || type == 'OSAMB' ? 'osamband' : 'sohaus')}>{dataItem.texti}</div>
 				{
@@ -285,18 +289,26 @@ class TermItemView extends Component {
 			let visunUrl;
 			let visunLink;
 
+			let formatUrlFrag = function(urlFrag) {
+				return (urlFrag.split(' ').length > 1 && !isNaN(urlFrag.split(' ')[0]) ? urlFrag.split(' ')[1] : urlFrag);
+			}
+
 			if (dataItem.texti.indexOf(':') > -1) {
 				let visunParts = dataItem.texti.split(':');
 				let visunUrlFrags = visunParts[0].split(', ');
 				let visunLinkFrags = visunParts[1].split('\t');
 
-				visunUrl = (visunUrlFrags[0])+(visunUrlFrags[1] ? '/ofl/'+visunUrlFrags[1].split(' ')[0] : '');
+				visunUrl = formatUrlFrag(visunUrlFrags[0])+
+					(visunUrlFrags[1] ? '/ofl/'+visunUrlFrags[1].split(' ')[0] : '')+
+					(visunUrlFrags[0].split(' ').length > 1 && !isNaN(visunUrlFrags[0].split(' ')[0]) ? '/rnum/'+visunUrlFrags[0].split(' ')[0] : '');
 				visunLink = visunLinkFrags[1]+' '+visunLinkFrags[0];
 			}
 			else {
 				let visunFrags = dataItem.texti.split(', ');
 
-				visunUrl = (visunFrags[0])+(visunFrags[1] ? '/ofl/'+visunFrags[1].split(' ')[0] : '');
+				visunUrl = formatUrlFrag(visunFrags[0])+
+					(visunFrags[1] ? '/ofl/'+visunFrags[1].split(' ')[0] : '')+
+					(visunFrags[0].split(' ').length > 1 && !isNaN(visunFrags[0].split(' ')[0]) ? '/rnum/'+visunFrags[0].split(' ')[0] : '');
 				visunLink = <React.Fragment>{visunFrags[0]} {islexHelper.formatOfl(visunFrags[1])}</React.Fragment>;
 
 			}
@@ -318,8 +330,8 @@ class TermItemView extends Component {
 
 				<p>
 					{
-						displayLang && islexHelper.tungumal[displayLang] &&
-						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
+						displayLang &&
+						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
 					}
 
 					{type}: {dataItem.texti}

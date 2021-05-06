@@ -86,6 +86,8 @@ class App extends Component {
 
 		let lang = this.refs.router.history.location.pathname.substr(1, 2);
 
+		console.log(lang)
+
 		window.Lang.setCurrentLang(lang)
 	}
 
@@ -130,7 +132,7 @@ class App extends Component {
 	render() {
 		let currentLang = window.currentLang || 'is';
 
-		let currentLangIcon = <img className="current-lang-icon" src={'img/flags/'+currentLang.toUpperCase()+'.png'} />;
+		let currentLangIcon = <img className="current-lang-icon" src={'/img/flags/'+currentLang.toUpperCase()+'.png'} />;
 
 		let langCodes = [];
 
@@ -149,7 +151,7 @@ class App extends Component {
 
 		langCodes.forEach(function(langCode) {
 			routes.push(<Route key={routes.length} path={'/'+langCode+'/'} component={Frontpage} exact={true} />);
-			routes.push(<Route key={routes.length} exact strict path={'(/'+langCode+'/leit/)?:searchString*(/fletta/)?:fletta*(/ofl/)?:ofl*(/page/)?:page*'} render={(routeProps) => (
+			routes.push(<Route key={routes.length} exact strict path={'(/'+langCode+'/leit/)?:searchString*(/fletta/)?:fletta*(/ofl/)?:ofl*(/rnum/)?:rnum*(/leitarsvid/)?:leitarsvid*(/page/)?:page*'} render={(routeProps) => (
 				<SearchResultsList onSearch={searchParams => this.setState({searchParams: searchParams})} {...routeProps} />
 			)} />);
 			routes.push(<Route key={routes.length} exact strict path={'(/'+langCode+'/ord/)?:entry_id*(/tungumal/)?:lang*'} render={(routeProps) => (
@@ -242,7 +244,7 @@ class App extends Component {
 
 							<h5 className="mb-4 pt-2">ISLEX</h5>
 
-							<PageMenu className="hidden-mobile-up" />
+							<PageMenu className="hidden-mobile-up" lang={currentLang} />
 
 							<h6>{window.l('Tungumál')}</h6>
 							<LangMenu />

@@ -107,11 +107,26 @@ class TermViewContainer extends Component {
 					this.setState({
 						found: true,
 						data: dataItem
-					})
+					}, function() {
+						if (this.props.history.location.search.indexOf('?itid=') > -1) {
+							this.goToItem(this.props.history.location.search.replace('?itid=', ''));
+						}
+					}.bind(this))
 				}
 			}.bind(this));
 
 		window.scrollTo(0, 0);
+	}
+
+	goToItem(itid) {
+		setTimeout(function() {
+			let element = document.querySelector('[data-itid="'+itid+'"]');
+
+			if (element) {
+				element.classList.add('item-highlight');
+				window.scrollTo(0, element.offsetTop);
+			}
+		}, 0);
 	}
 
 	render() {
@@ -148,7 +163,7 @@ class TermViewContainer extends Component {
 								localStorage.setItem('selected-lang', lang);
 							}
 						}>
-						<img className="button-flag" src={'img/flags/'+lang+'.png'} />
+						<img className="button-flag" src={'/img/flags/'+lang+'.png'} />
 
 						<span> {islexHelper.tungumal[lang].name}</span>
 					</Link>

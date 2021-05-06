@@ -5,21 +5,27 @@ export default {
 	tungumal: {
 		'FRA': {
 			code: 'fr',
-			name: 'Franska'
-		},
-		/*'TYS': {
-			code: 'de',
-			name: 'Þýska'
-		}*/
+			name: 'Français'
+		}
 	},
 
 	langCodes: [
-		'is', 'fr', 'de'
+		'is', 'fr'
 	],
 
 	specialChars: [
-		'á', 'ð', 'é', 'í', 'ó', 'ú', 'ý', 'þ', 'æ', 'ö', 'à', 'â', 'ç', 'è', 'ê', 'ë', 'ï', 'î', 'ô', 'ù', 'û', 'ü', 'ÿ', 'œ'
+		'á', 'ð', 'é', 'í', 'ó', 'ú', 'ý', 'þ', 'æ', 'ö', 'ä', 'å', 'ø'
 	],
+
+	getIslexLangCode: function(lang) {
+		for (let key in this.tungumal) {
+			if (this.tungumal[key].code == lang) {
+				return key;
+			}
+		}
+
+		return null;
+	},
 
 	formatOfl: function(ofl) {
 		let currentLang = window.currentLang.toLowerCase() || 'is';

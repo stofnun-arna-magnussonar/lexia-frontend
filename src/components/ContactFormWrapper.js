@@ -19,7 +19,7 @@ class ContactFormWrapper extends Component {
 							messageLabel={window.l('Skilaboð')}
 							sendButtonLabel={window.l('Senda')}
 							takkHeading={window.l('Takk fyrir')}
-							takkText={window.l('Fyrirspurnin þín hefur verið send og verður svarað eins fljótt og auðið er.')}
+							takkText={window.l('Fyrirspurn þín hefur verið send og verður svarað eins fljótt og auðið er.')}
 						/>
 				</div>
 			</div>

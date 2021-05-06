@@ -258,7 +258,7 @@ class AutocompleteInput extends Component {
 					{
 						this.props.headerText &&
 						<div className="list-group-item list-group-item-light">
-							<small>{this.props.headerText}</small>
+							<small dangerouslySetInnerHTML={{__html: this.props.headerText}}></small>
 						</div>
 					}
 					{items}
