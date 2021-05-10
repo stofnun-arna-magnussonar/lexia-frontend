@@ -21,7 +21,7 @@ body {
 
 .header {
 	@media screen and (min-width: 768px) {
-		//background-image: url('../img/kort-haus.png');
+		background-image: url('../img/kort-haus.png');
 		background-position: right;
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -133,7 +133,7 @@ input, textarea {
 	}
 
 	&.sticky {
-		padding: 10px 20px 30px 20px;
+		padding: 10px 20px 10px 20px;
 
 		box-shadow: 0 2px 6px #00000040;
 	}
@@ -174,6 +174,8 @@ input, textarea {
 		color: #9a9a9a;
 		font-size: 0.8rem;
 
+		z-index: 100;
+
 		@media screen and (max-width: @mobile-width) {
 			display: none;
 		}
@@ -187,6 +189,61 @@ input, textarea {
 		}
 
 		.sticky& {
+		}
+
+		.autocomplete-open & {
+			top: 45px;
+			left: 30px;
+
+			@media screen and (max-width: @mobile-width) {
+				display: block;
+
+				top: 38px;
+				left: -25px;
+			}
+		}
+	}
+
+	.lang-menu {
+		margin-bottom: 15px;
+
+		a {
+			padding: 0.5rem 1rem;
+			margin-right: 5px;
+
+			background: #ffffff9c;
+
+			color: #000;
+			border-radius: 0.25rem;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 0.9rem;
+			font-weight: normal;
+
+			.transition(all 200ms ease-in-out);
+
+			img {
+				display: none;
+			}
+
+			&:hover {
+				background: #ffffffa1;
+
+				color: @arnastofnun-red;
+			}
+
+			&.active {
+				background: @arnastofnun-red;
+				box-shadow: 0 1px 2px #00000057;
+
+				color: #fff;
+
+				img {
+					display: initial;
+
+					box-shadow: 0px 0px 0px 2px #ffffff;
+				}
+			}
 		}
 	}
 }
@@ -202,7 +259,7 @@ input, textarea {
 
 			flex-wrap: nowrap;
 			flex-direction: row !important;
-			
+
 			overflow-x: scroll;
 
 			white-space: nowrap;
@@ -261,22 +318,22 @@ input, textarea {
 
 .dictionary-list {
 	.list-group-item {
-		padding: 0;
+		padding: 0.5rem 1.25rem;
 		margin-bottom: 0;
 
 		&:not(:first-child) {
 			border-top: 0;
 		}
 
-		> a {
-			display: block;
+		&:hover {
+			background: lighten(@arnastofnun-gray, 2%);
+		}
 
-			padding: 1rem 1.25rem;
-
+		a {
 			text-decoration: none;
 
 			&:hover {
-				background: lighten(@arnastofnun-gray, 2%);
+				border-bottom: 1px solid @arnastofnun-red;
 			}
 		}
 
@@ -289,7 +346,16 @@ input, textarea {
 		}
 
 		.results-example {
-			margin-left: 15px;
+			display: inline;
+
+			margin-left: 20px;
+
+			&.ordmynd {
+				margin-right: 20px !important;
+
+				color: #666;
+				font-size: 0.8rem;
+			}
 
 			strong {
 				color: @arnastofnun-red;
@@ -297,12 +363,22 @@ input, textarea {
 			}
 
 			.example-item {
+				display: inline;
+
+				margin-right: 20px;
+
 				color: @arnastofnun-red;
 				font-style: italic;
 
 				strong {
 					font-weight: 600;
 				}
+			}
+
+			.lang-item {
+				display: inline-block;
+
+				margin-right: 20px;
 			}
 
 			.comma-list {
@@ -315,8 +391,24 @@ input, textarea {
 }
 
 .dictionary-entry {
+	td:not(:first-child) {
+		padding-left: 15px;
+	}
+
+	td {
+		.results-example {
+			margin-left: 0 !important;
+		}
+	}
+
 	&.card {
-		padding-left: 10px;
+		padding-left: 15px;
+	}
+
+	.item-highlight {
+		background-color: #fff8b6;
+
+		box-shadow: 0 0 0px 5px #fff8b6;
 	}
 
 	.dict-view {
@@ -447,6 +539,8 @@ input, textarea {
 			}
 
 			span.dict-jafn.break-next + span.dict-jafn {
+				display: block;
+
 				margin-left: 15px !important;
 			}
 
@@ -563,7 +657,7 @@ input, textarea {
 	&.alert-error {
 		background-color: red;
 	}
-	
+
 	&.alert-info {
 		padding: 5px 10px;
 		margin: 10px 0;
@@ -623,5 +717,96 @@ input, textarea {
 		opacity: 0;
 
 		.transition-delay(0)
+	}
+}
+
+.toggle-switch {
+	position: relative;
+
+	cursor: pointer;
+
+	.label {
+		display: inline-block;
+
+		color: #727272;
+		font-size: 0.8rem;
+	}
+
+	&:hover {
+		.label {
+			color: #444;
+		}
+
+		.switch {
+			.button {
+				background: lighten(#5aa7e8, 10%);
+			}
+		}
+	}
+
+	.switch {
+		display: inline-block;
+
+		position: relative;
+
+		margin-left: 10px;
+
+		width: 26px;
+		height: 8px;
+
+		background: #b2b2b2;
+
+		box-shadow: inset 1px 1px 0px #0000001f;
+		border-radius: 15px;
+
+		.button {
+			display: block;
+
+			position: absolute;
+
+			top: -4px;
+			left: 0px;
+
+			width: 14px;
+			height: 14px;
+
+			background: #999;
+
+			border-radius: 100%;
+			box-shadow: 1px 1px 1px #0000008f;
+
+			.transition(all 300ms ease-in-out);
+
+			.icon {
+				display: inline-block;
+
+				position: absolute;
+
+				top: 3px;
+				left: 5px;
+
+				width: 5px;
+				height: 7px;
+
+				border-right: 2px solid #2071b5;
+				border-bottom: 2px solid #2071b5;
+
+				opacity: 0;
+
+				.transform(rotate(45deg));
+
+				.transition(all 300ms ease-in-out);
+			}
+
+			.switch-on& {
+				left: 12px;
+
+				background-color: #fff;
+
+				.icon {
+					opacity: 1;
+				}
+			}
+		}
 	}
 }

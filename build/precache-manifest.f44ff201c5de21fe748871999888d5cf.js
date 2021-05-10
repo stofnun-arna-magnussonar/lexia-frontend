@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/lexia/static/js/runtime~main.54f580f7.js"
   },
   {
-    "revision": "caa07f3b43b75699a47b",
-    "url": "/lexia/static/js/main.d6733e7c.chunk.js"
+    "revision": "817a61f72eba2388261a",
+    "url": "/lexia/static/js/main.69cb8c88.chunk.js"
   },
   {
     "revision": "650441f832b99d46fedf",
     "url": "/lexia/static/js/2.33de272e.chunk.js"
   },
   {
-    "revision": "caa07f3b43b75699a47b",
+    "revision": "817a61f72eba2388261a",
     "url": "/lexia/static/css/main.843e872b.chunk.css"
   },
   {
-    "revision": "0b4080ef4f6fc70003a331f10fd09b9e",
+    "revision": "514ff6287856786bce3dfb1586de9034",
     "url": "/lexia/index.html"
   }
 ];

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/lexia/precache-manifest.c44d78883ba400075ec214998e6539a3.js"
+  "/lexia/precache-manifest.f44ff201c5de21fe748871999888d5cf.js"
 );
 
 workbox.clientsClaim();

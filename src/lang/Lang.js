@@ -27,7 +27,7 @@ export default {
 	},
 
 	fetchLangData: function() {
-		fetch(config.apiRoot+'/api/trans?limit=2000')
+		fetch(config.islexRoot+'/api/trans?limit=2000')
 			.then(function(response) {
 				return response.json();
 			})
