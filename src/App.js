@@ -20,6 +20,9 @@ import config from "./config";
 import islexHelper from "./islexHelper";
 
 import logo from './img/logo.svg';
+import logoVigdisIs from './img/logo-vigdis-white-is.png';
+import logoVigdisFr from './img/logo-vigdis-white-fr.png';
+
 window.islexHelper = islexHelper;
 
 class App extends Component {
@@ -182,9 +185,27 @@ class App extends Component {
 
 								<h1 className="h2">
 									<img src={logo} className="mr-4 hidden-mobile" />
-									<span>{window.l('LEXIA')}<small>{window.l('-orðabókin')}</small></span>
+									{
+										currentLang == 'fr' &&
+										<span><small>{window.l('Le dictionnaire')}</small> {window.l('LEXIA')}</span>
+									}
+									{
+										currentLang == 'is' &&
+										<span>{window.l('LEXIA')}<small>{window.l('-orðabókin')}</small></span>
+									}
 									<span className="hidden-mobile smaller">{window.l('Stofnun Árna Magnússonar í íslenskum fræðum')}</span>
 								</h1>
+
+								<a href="https://vigdis.hi.is/" className="logo-vigdis">
+									{
+										currentLang == 'fr' &&
+										<img src={logoVigdisFr} />
+									}
+									{
+										currentLang == 'is' &&
+										<img src={logoVigdisIs} />
+									}
+								</a>
 
 								<PageMenu className="hidden-mobile" lang={currentLang} />
 

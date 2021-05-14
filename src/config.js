@@ -10,5 +10,5 @@ export default {
 	audioUrl: '//islex.arnastofnun.is/islex-files/audio/',
 	imageUrl: '//islex.arnastofnun.is/islex-files/myndir/',
 
-	gaTrackingId: 'UA-91268821-1'
+	gaTrackingId: 'G-24WKCEDYRW'
 }

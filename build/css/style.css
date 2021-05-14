@@ -592,6 +592,26 @@ body {
     background-repeat: no-repeat;
   }
 }
+.header .container {
+  position: relative;
+}
+@media screen and (min-width: 1000px) {
+  .header .logo-vigdis {
+    display: block;
+    position: absolute;
+    right: 140px;
+    top: 0;
+  }
+}
+.header .logo-vigdis img {
+  max-width: 230px;
+}
+@media screen and (max-width: 1000px) {
+  .header .logo-vigdis img {
+    max-width: 200px;
+    margin-top: 20px;
+  }
+}
 .app-wrapper {
   background-color: #F3F3F3;
 }

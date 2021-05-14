@@ -192,30 +192,30 @@ class SearchBox extends Component {
 
 		return (
 			<div className="form-group row">
-				<div className="col-9 col-sm-10 col-md-11"> 
-					<AutocompleteInput inputClassName="form-control" 
+				<div className="col-9 col-sm-10 col-md-11">
+					<AutocompleteInput inputClassName="form-control"
 						ref="searchInput"
 						responseDataField="results"
 						searchUrl={config.apiRoot+'/api/es/flettur/?fletta=$s*&simple=true'}
-						onChange={this.inputChangeHandler} 
-						inputName="searchBoxInput" 
-						value={this.state.searchBoxInput} 
-						type="text" 
-						onEnter={this.executeSearch} 
+						onChange={this.inputChangeHandler}
+						inputName="searchBoxInput"
+						value={this.state.searchBoxInput}
+						type="text"
+						onEnter={this.executeSearch}
 						onItemSelect={this.searchBoxItemSelectHandler}
 						placeholder={window.l('Leitarorð')}
 						minChars={2}
 						valueField="fletta"
 						selectedItemClass="active"
 						onFocus={this.inputFocusHandler}
-						disableAutoFill={false} 
+						disableAutoFill={false}
 						headerText={'&nbsp;'}
-						listLabelFormatFunc={this.formatAutocompleteListItems} 
+						listLabelFormatFunc={this.formatAutocompleteListItems}
 					/>
 					<div className="search-helpers">{specialCharLinks}</div>
 
 					<div className="form-check float-right">
-						<ToggleSwitch label="Leita í texta" onChange={this.inputChangeHandler} name="textaleitInput" value={this.state.textaleitInput} />
+						<ToggleSwitch label={window.l('Leita í texta')} onChange={this.inputChangeHandler} name="textaleitInput" value={this.state.textaleitInput} />
 					</div>
 				{
 					/*
@@ -224,7 +224,7 @@ class SearchBox extends Component {
 						placeholder="Leit í orðabanka"
 						type="text"
 						value={this.state.searchBoxInput}
-						onKeyPress={this.inputKeyPressHandler} 
+						onKeyPress={this.inputKeyPressHandler}
 						onChange={this.inputChangeHandler}
 					/>
 					*/

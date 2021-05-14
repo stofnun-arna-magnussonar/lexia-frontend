@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/lexia/precache-manifest.f44ff201c5de21fe748871999888d5cf.js"
+  "//lexia.arnastofnun.is/precache-manifest.d52b8d18f5745ee2487c6af306b0cce0.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/lexia/index.html", {
+workbox.routing.registerNavigationRoute("//lexia.arnastofnun.is/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
