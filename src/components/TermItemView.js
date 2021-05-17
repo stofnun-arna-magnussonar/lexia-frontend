@@ -250,7 +250,7 @@ class TermItemView extends Component {
 				<TagName data-type={type} data-itid={dataItem.itid} className={'dict-item dict-jafn'+(this.props.firstLevel ? ' first-level' : '')+(dataItem.skil == '/' || dataItem.skil == ';/' ? ' break-next' : '')}>
 					{
 						displayLang &&
-						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'img/flags/'+displayLang+'.png'} />
+						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
 					}
 
 					<span title={titleText || null}>{dataItem.texti}
