@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "//lexia.arnastofnun.is/static/css/main.843e872b.chunk.css"
   },
   {
-    "revision": "d936926a90e9e477f24e4b90a55f8389",
+    "revision": "91060653858ca23b7de5f9ec63c8852d",
     "url": "//lexia.arnastofnun.is/index.html"
   }
 ];
