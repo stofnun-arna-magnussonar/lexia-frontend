@@ -186,13 +186,13 @@ class TermItemView extends Component {
 
 						let TagName = !this.props.lang ? 'div' : 'span';
 
-						return <TagName key={daemiTranslation.itid} data-itid={daemiTranslation.itid} className={'daemi-translation dict-jafn'+(daemiTranslation.skil == '/' || daemiTranslation.skil == ';/' ? ' break-next' : '')}>
+						return islexHelper.tungumal[displayLang] ? <TagName key={daemiTranslation.itid} data-itid={daemiTranslation.itid} className={'daemi-translation dict-jafn'+(daemiTranslation.skil == '/' || daemiTranslation.skil == ';/' ? ' break-next' : '')}>
 							{
 								displayLang &&
 								<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
 							}
 							{daemiTranslation.texti}
-						</TagName>
+						</TagName> : null
 					}.bind(this))
 				}
 			</div>;
@@ -323,14 +323,12 @@ class TermItemView extends Component {
 				displayLang = type.match(/^[A-Z]{2,3}-|-[A-Z]{2,3}$/g)[0].replace('-', '');
 			}
 
-			console.log(displayLang)
-
 			el = <div data-type={type} data-itid={dataItem.itid} style={{border: '1px solid #999'}}>
 				<div><strong>VANTAR BIRTINGU: {type}</strong></div>
 
 				<p>
 					{
-						displayLang &&
+						displayLang && islexHelper.tungumal[displayLang] &&
 						<img className="button-flag" title={islexHelper.tungumal[displayLang].name} src={'/img/flags/'+displayLang+'.png'} />
 					}
 
