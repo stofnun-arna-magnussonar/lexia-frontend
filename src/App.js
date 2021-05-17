@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 import SearchBox from './components/SearchBox';
 import Frontpage from './components/Frontpage';
