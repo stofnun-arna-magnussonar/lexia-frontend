@@ -91,8 +91,8 @@ class TermViewContainer extends Component {
 					let dataItem = json;
 
 					if (dataItem.items) {
-						if (!missingTranslation && this.props.match.params.lang && !_.find(dataItem.items, function(item) {
-							return item.teg.toLowerCase().startsWith(this.props.match.params.lang.toLowerCase()) || item.teg.toLowerCase().endsWith(this.props.match.params.lang.toLowerCase());
+						if (!missingTranslation && !_.find(dataItem.items, function(item) {
+							return item.teg.toLowerCase().startsWith((this.props.match.params.lang || config.defaultLang).toLowerCase()+'-') || item.teg.toLowerCase().endsWith((this.props.match.params.lang || config.defaultLang).toLowerCase()+'-');
 						}.bind(this))) {
 							this.fetchData(true);
 						}
