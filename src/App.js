@@ -263,7 +263,16 @@ class App extends Component {
 								</div>
 							</button>
 
-							<h5 className="mb-4 pt-2">ISLEX</h5>
+							<h5 className="mb-4 pt-2">
+								{
+									currentLang == 'fr' &&
+									<span>{window.l('Le dictionnaire')} {window.l('LEXIA')}</span>
+								}
+								{
+									currentLang == 'is' &&
+									<span>{window.l('LEXIA')}{window.l('-orðabókin')}</span>
+								}
+							</h5>
 
 							<PageMenu className="hidden-mobile-up" lang={currentLang} />
 
