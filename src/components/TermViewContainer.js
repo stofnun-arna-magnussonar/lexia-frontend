@@ -92,7 +92,9 @@ class TermViewContainer extends Component {
 
 					if (dataItem.items) {
 						if (!missingTranslation && !_.find(dataItem.items, function(item) {
-							return item.teg.toLowerCase().startsWith((this.props.match.params.lang || config.defaultLang).toLowerCase()+'-') || item.teg.toLowerCase().endsWith((this.props.match.params.lang || config.defaultLang).toLowerCase()+'-');
+							return item.teg.toLowerCase().startsWith((this.props.match.params.lang || config.defaultLang).toLowerCase()+'-') ||
+								item.teg.toLowerCase().endsWith((this.props.match.params.lang ||
+								config.defaultLang).toLowerCase()+'-');
 						}.bind(this))) {
 							this.fetchData(true);
 						}

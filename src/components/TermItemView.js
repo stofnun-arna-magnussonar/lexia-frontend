@@ -45,6 +45,8 @@ class TermItemView extends Component {
 		let dataItem = this.props.item;
 		let type = dataItem.teg;
 
+		console.log(type)
+
 		let el;
 
 		let lastTeg = '';
@@ -59,6 +61,7 @@ class TermItemView extends Component {
 							pitem.teg.toLowerCase().startsWith(this.props.lang.toLowerCase()) ||
 							pitem.teg.toLowerCase().endsWith(this.props.lang.toLowerCase()) ||
 							pitem.teg.startsWith('NOT-') ||
+							pitem.teg == 'IS-precis' ||
 							pitem.teg == 'OSTÆÐA' ||
 							pitem.teg == 'DÆMI' ||
 							pitem.teg == 'Z-MERKING' ||
