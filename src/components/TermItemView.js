@@ -234,7 +234,7 @@ class TermItemView extends Component {
 		}
 		*/
 		else if (type.indexOf('-jafn') > -1 || type.indexOf('-þýð') > -1 || type.indexOf('-skýr') > -1) {
-			let displayLang;
+			let displayLang = '';
 
 			// Athuga hvort fáni eigi að birtast
 			if (type.match(/^[A-Z]{2,3}-|-[A-Z]{2,3}$/g)) {
