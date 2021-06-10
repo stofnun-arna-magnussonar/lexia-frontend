@@ -86,9 +86,14 @@ class TermItemView extends Component {
 
 				return termItemView;
 			}.bind(this)) : [];
-
 		if (type == 'STRIK') {
 			el = <hr data-type={type} data-itid={dataItem.itid} />;
+		}
+		else if (type.startsWith('KOMpre-')) {
+			el = <span data-type={type} className="dict-item-inline dict-text-light">[{dataItem.texti}] </span>
+		}
+		else if (type == 'IS-precis') {
+			el = <span data-type={type} className="dict-item-inline dict-text-light"> ({dataItem.texti})</span>
 		}
 		else if (type == 'FRAMB') {
 			el = this.renderAudioEl(dataItem)
@@ -235,8 +240,6 @@ class TermItemView extends Component {
 			if (type.match(/^[A-Z]{2,3}-|-[A-Z]{2,3}$/g)) {
 				displayLang = type.match(/^[A-Z]{2,3}-|-[A-Z]{2,3}$/g)[0].replace('-', '');
 			}
-
-			console.log(displayLang)
 
 			// Athuga hér með síðasta tungumál, if displayLang != lastLang ? TagName = 'div'
 			let TagName = !this.props.lang ? 'div' : 'span';

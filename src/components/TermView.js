@@ -40,9 +40,9 @@ class TermView extends Component {
 				{
 					dataItem.items && dataItem.items.length > 0 &&
 					dataItem.items.map(function(item, index) {
-						let termItemView = <TermItemView key={index} 
-							firstLevel={true} 
-							lang={!dataItem.missingTranslation ? this.props.lang : undefined} 
+						let termItemView = <TermItemView key={index}
+							firstLevel={true}
+							lang={!dataItem.missingTranslation ? this.props.lang : undefined}
 							item={item} />;
 
 						return termItemView;
