@@ -89,8 +89,6 @@ class App extends Component {
 
 		let lang = this.refs.router.history.location.pathname.substr(1, 2);
 
-		console.log(lang)
-
 		window.Lang.setCurrentLang(lang)
 	}
 

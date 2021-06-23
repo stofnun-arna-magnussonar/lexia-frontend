@@ -37,7 +37,7 @@ class ContactForm extends Component {
 
 	validateForm() {
 		let validationError = [];
-		if (this.state.formData.sendandi && 
+		if (this.state.formData.sendandi &&
 			this.state.formData.sendandi_netfang &&
 			this.validateEmail(this.state.formData.sendandi_netfang) &&
 			this.state.formData.skilabod
@@ -144,7 +144,8 @@ class ContactForm extends Component {
 			try {
 				if (window.grecaptcha) {
 					window.grecaptcha.render('grecaptcha', {
-						callback: window.grecaptchaCallback
+						callback: window.grecaptchaCallback,
+						hl: window.currentLang || 'is'
 					});
 
 					window.reCaptchaInitialized = true;
@@ -169,21 +170,21 @@ class ContactForm extends Component {
 
 				<div className="form-group">
 					<label htmlFor="sendandi">{this.props.nameLabel || 'Nafn'}</label>
-					<input type="text" 
-						value={this.state.formData.sendandi} 
-						onChange={this.formInputChangeHandler} 
-						className="form-control" 
-						name="sendandi" 
+					<input type="text"
+						value={this.state.formData.sendandi}
+						onChange={this.formInputChangeHandler}
+						className="form-control"
+						name="sendandi"
 						id="sendandi" />
 				</div>
 
 				<div className="form-group">
 					<label htmlFor="sendandi_netfang">{this.props.emailLabel || 'Netfang'}</label>
-					<input type="email" 
-						value={this.state.formData.sendandi_netfang} 
-						onChange={this.formInputChangeHandler} 
-						className="form-control" 
-						name="sendandi_netfang" 
+					<input type="email"
+						value={this.state.formData.sendandi_netfang}
+						onChange={this.formInputChangeHandler}
+						className="form-control"
+						name="sendandi_netfang"
 						id="sendandi_netfang" />
 				</div>
 
@@ -191,26 +192,26 @@ class ContactForm extends Component {
 					this.props.requirePhoneNumber &&
 					<div className="form-group">
 						<label htmlFor="sendandi_simanumer">{this.props.phoneLabel || 'Símanúmer'}</label>
-						<input type="tel" 
-							value={this.state.formData.sendandi_simanumer} 
-							onChange={this.formInputChangeHandler} 
-							className="form-control" 
-							name="sendandi_simanumer" 
+						<input type="tel"
+							value={this.state.formData.sendandi_simanumer}
+							onChange={this.formInputChangeHandler}
+							className="form-control"
+							name="sendandi_simanumer"
 							id="sendandi_simanumer" />
 					</div>
 				}
 
 				<div className="form-group">
 					<label htmlFor="skilabod">{this.props.messageLabel || 'Skilaboð'}</label>
-					<textarea className="form-control" 
-						onChange={this.formInputChangeHandler} 
-						name="skilabod" 
-						id="skilabod" 
+					<textarea className="form-control"
+						onChange={this.formInputChangeHandler}
+						name="skilabod"
+						id="skilabod"
 						rows="5" value={this.state.formData.skilabod}></textarea>
 				</div>
 
-				<div id="grecaptcha" 
-					className="g-recaptcha mb-3" 
+				<div id="grecaptcha"
+					className="g-recaptcha mb-3"
 					data-sitekey={this.grecaptchaKey}></div>
 
 				{
