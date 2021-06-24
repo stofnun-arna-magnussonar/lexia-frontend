@@ -24,7 +24,7 @@ class TermItemView extends Component {
 					this.refs.audioControl.load();
 					this.refs.audioControl.play()
 				}.bind(this)
-			}>{islexHelper.firstLetterUpperCase(window.l(dataItem.texti.split('\t')[1]))}</a>
+			}>{window.l(islexHelper.firstLetterUpperCase(dataItem.texti.split('\t')[1]))}</a>
 		</div>;
 	}
 
