@@ -8,7 +8,8 @@ export default {
 	islexRoot: '//islex.arnastofnun.is/django/',
 
 	audioUrl: '//islex.arnastofnun.is/islex-files/audio/',
-	imageUrl: '//islex.arnastofnun.is/islex-files/myndir/',
+	//imageUrl: '//islex.arnastofnun.is/islex-files/myndir/',
+	imageUrl: '//ymsir.arnastofnun.is/lexia/myndir/',
 
 	defaultLang: 'FRA',
 

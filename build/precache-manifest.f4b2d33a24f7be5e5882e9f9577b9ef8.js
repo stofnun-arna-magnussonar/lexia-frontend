@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "180fd4ba5130f4f60faf",
+    "revision": "1605e26d3a18071b0691",
     "url": "//lexia.arnastofnun.is/static/css/main.843e872b.chunk.css"
   },
   {
-    "revision": "180fd4ba5130f4f60faf",
-    "url": "//lexia.arnastofnun.is/static/js/main.d4be822c.chunk.js"
+    "revision": "1605e26d3a18071b0691",
+    "url": "//lexia.arnastofnun.is/static/js/main.b149d843.chunk.js"
   },
   {
     "revision": "45488cd6dc851f0f9674",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "//lexia.arnastofnun.is/static/media/logo-vigdis-white-fr.852afad2.png"
   },
   {
-    "revision": "ad23326d87308132a6395f205085a859",
+    "revision": "f832a6c8461c8a4963f9feea5ba77061",
     "url": "//lexia.arnastofnun.is/index.html"
   }
 ];
