@@ -10,8 +10,8 @@ class ContactFormWrapper extends Component {
 				 <div className="page-content card-body">
 						<h2>{window.l('Hafa samband')}</h2>
 						<br/>
-						<ContactForm formId={'ISLEX'} 
-							messageErrorText={window.l('Þú verður að skrifa nafnið þitt og skilaboð.')} 
+						<ContactForm formId={'LEXIA'} 
+							messageErrorText={window.l('Þú verður að skrifa nafnið þitt og skilaboð.')}
 							emailErrorText={window.l('Þú verður að skrifa gilt netfang.')}
 							requestErrorText={window.l('Villa í fyrirspurn.')}
 							nameLabel={window.l('Nafn')}
