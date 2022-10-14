@@ -29,9 +29,9 @@ class TermView extends Component {
 				}
 				{dataItem.fletta} <span className="word-class">{islexHelper.formatOfl(dataItem.ofl)}</span></div>
 				{
-					dataItem.missingTranslation && !hasVisun &&
+					dataItem.missingTranslation &&
 					<div className="alert alert-warning"><strong>{window.l('Þýðingu vantar')}</strong><br/>
-						{window.l('Orðið er sýnt með tiltækum þýðingum')}</div>
+						{window.l('Orðið er í vinnslu')}</div>
 				}
 				{
 					dataItem.stuttbeyg && dataItem.stuttbeyg != '' &&

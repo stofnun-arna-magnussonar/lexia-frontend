@@ -45,8 +45,6 @@ class TermItemView extends Component {
 		let dataItem = this.props.item;
 		let type = dataItem.teg;
 
-		console.log(type)
-
 		let el;
 
 		let lastTeg = '';

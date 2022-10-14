@@ -16,19 +16,19 @@ self.__precacheManifest = [
     "url": "//lexia.arnastofnun.is/static/js/runtime~main.caf4fdf2.js"
   },
   {
-    "revision": "a522a1a27716868c64f8",
-    "url": "//lexia.arnastofnun.is/static/js/main.d73f4372.chunk.js"
+    "revision": "2da979b027fc03453f90",
+    "url": "//lexia.arnastofnun.is/static/js/main.e238b8d8.chunk.js"
   },
   {
     "revision": "d4924b22cf01dd9987d4",
     "url": "//lexia.arnastofnun.is/static/js/2.ea9d9acd.chunk.js"
   },
   {
-    "revision": "a522a1a27716868c64f8",
+    "revision": "2da979b027fc03453f90",
     "url": "//lexia.arnastofnun.is/static/css/main.843e872b.chunk.css"
   },
   {
-    "revision": "9bd92e7a37bed3a3d835c688b19f2eb3",
+    "revision": "bad8f2642b8912159a2128ed02352899",
     "url": "//lexia.arnastofnun.is/index.html"
   }
 ];

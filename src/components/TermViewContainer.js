@@ -132,6 +132,8 @@ class TermViewContainer extends Component {
 	}
 
 	render() {
+		console.log(this.state.data)
+
 		let dataItem = this.state.data;
 
 		let currentLang = window.currentLang || 'is';
@@ -193,13 +195,14 @@ class TermViewContainer extends Component {
 
 								Takkar til að skipta á milli orðabóka
 
+								*/}
+
 								<div className="nav nav-pills">
 									<div className="navbar-text text-secondary mr-4 mb-2 d-none d-sm-block">{window.l('Orðabók')}: </div>
 									{
 										langButtons
 									}
 								</div>
-								*/}
 
 								<div className={'dictionary-entry card flex-grow-1'}>
 									<div className={'card-body'}>

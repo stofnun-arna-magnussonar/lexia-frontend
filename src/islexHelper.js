@@ -6,11 +6,15 @@ export default {
 		'FRA': {
 			code: 'fr',
 			name: 'Français'
+		},
+		'TYS': {
+			code: 'de',
+			name: 'Þýska'
 		}
 	},
 
 	langCodes: [
-		'is', 'fr'
+		'is', 'fr', 'de'
 	],
 
 	specialChars: [

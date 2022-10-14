@@ -42,7 +42,7 @@ export default {
 		'Fyrirspurnin þín hefur verið send og verður svarað eins fljótt og auðið er.': '',
 
 		'Þýðingu vantar': '',
-		'Orðið er sýnt með tiltækum þýðingum': '',
+		'Orðið er í vinnslu': '',
 
 		"skáldamál": "runollinen",
 		"bara í orðasambandi": "vain vakiintuneessa sanonnassa",
@@ -177,5 +177,6 @@ export default {
 		"sérstætt": "predikatiivina",
 		"um tvo eða tvennt": "kahdesta"
 	},
+	'de': {},
 	'is': {}
 }

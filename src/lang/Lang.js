@@ -6,7 +6,8 @@ const defaultLang = 'is';
 
 let langData = {
 	'is': {},
-	'fr': {}
+	'fr': {},
+	'de': {}
 }
 
 window.langData = langData;
