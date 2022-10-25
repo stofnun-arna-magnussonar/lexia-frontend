@@ -63,6 +63,7 @@ class TermItemView extends Component {
 							pitem.teg == 'OSTÆÐA' ||
 							pitem.teg == 'DÆMI' ||
 							pitem.teg == 'Z-MERKING' ||
+							pitem.teg == 'Z-LO' ||
 							pitem.teg == 'Z-PERSÓNA' ||
 							pitem.teg == 'LIÐUR' ||
 							pitem.teg == 'VÍSUN' ||
