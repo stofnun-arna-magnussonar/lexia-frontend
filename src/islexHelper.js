@@ -16,7 +16,7 @@ export default {
 	},
 
 	langCodes: [
-		'is', 'fr', 'de'
+		'is', 'fr'//, 'de'
 	],
 
 	specialChars: [
