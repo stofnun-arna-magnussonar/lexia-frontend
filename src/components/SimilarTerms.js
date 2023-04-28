@@ -36,7 +36,7 @@ class SimilarTerms extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		// Skoðað hvort breytur hafa breyst og hvort component eigi að uppfærast
 		if (
-			prevProps.flid != this.props.flid
+			prevProps.fletta != this.props.fletta || prevProps.ofl != this.props.ofl
 		) {
 			this.setState({
 				listData: []
@@ -57,7 +57,7 @@ class SimilarTerms extends Component {
 
 		this.fetching = true;
 
-		fetch(this.url+this.props.flid)
+		fetch(this.url+'?fletta='+this.props.fletta+'&ofl='+this.props.ofl)
 			.then(function(response) {
 				return response.json();
 			})

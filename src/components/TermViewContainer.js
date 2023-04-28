@@ -132,8 +132,6 @@ class TermViewContainer extends Component {
 	}
 
 	render() {
-		console.log(this.state.data)
-
 		let dataItem = this.state.data;
 
 		let currentLang = window.currentLang || 'is';
@@ -213,7 +211,7 @@ class TermViewContainer extends Component {
 
 										{
 											['adj', 'n', 'adv', 'v', 'forl'].indexOf(dataItem.ofl.split(' ')[0]) > -1 &&
-											<SimilarTerms flid={this.props.match.params.entry_id} />
+											<SimilarTerms fletta={dataItem.fletta} ofl={dataItem.ofl} />
 										}
 
 									</div>
