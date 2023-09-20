@@ -4,8 +4,8 @@ export default {
 	pageSize: 50,
 
 	apiRoot: process.env.REACT_APP_API_ROOT,
-	//apiRoot: 'http://130.208.178.119:8000',
-	//islexRoot: 'http://130.208.178.119:8000',
+	//apiRoot: 'http://130.208.108.18:8000',
+	//islexRoot: 'http://130.208.108.18:8000',
 	islexRoot: '//islex.arnastofnun.is/django',
 
 	audioUrl: '//islex.arnastofnun.is/islex-files/audio/',
