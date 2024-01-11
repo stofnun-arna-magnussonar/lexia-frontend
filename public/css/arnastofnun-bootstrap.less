@@ -31,22 +31,31 @@ body {
 		padding: 40px 20px;
 	}
 
-	h1 {
+	.logo-wrapper {
+		display: flex;
+
+		margin-top: 0;
+
 		margin-bottom: 0;
 
-	    font-family: "Montserrat","Open Sans","Lucida Grande","Helvetica Neue",sans-serif;
-	    font-size: 2rem;
+		font-family: "Lido STF", "Times New Roman", serif;
+		font-size: 1.9rem;
+		font-weight: 500;
+
+		line-height: 30px;
 
 		@media screen and (max-width: @mobile-width) {
 			font-size: 1.2rem !important;
 		}
 
-		img {
+		.smaller {
 			display: block;
 
-			max-width: 170px;
+			font-size: 1.3rem;
+		}
 
-			margin-top: 15px;
+		img {
+			max-width: 60px;
 		}
 	}
 

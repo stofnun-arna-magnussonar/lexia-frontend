@@ -19,7 +19,7 @@ import EventBus from 'eventbusjs';
 import config from "./config";
 import islexHelper from "./islexHelper";
 
-import logo from './img/sam-logo.png';
+import logo from './img/logo-single.png';
 import logoVigdisIs from './img/logo-vigdis-white-is.png';
 import logoVigdisFr from './img/logo-vigdis-white-fr.png';
 
@@ -179,19 +179,24 @@ class App extends Component {
 
 							<div className="container">
 
-								<img src={logo} className="float-right hidden-mobile-up" />
+								<div className="logo-wrapper">
+									<div className="logo">
+										<img src={logo} className="mr-4" />
+									</div>
+									
+									<div className="text">
+										{
+											currentLang == 'fr' &&
+											<div><small>{window.l('Le dictionnaire')}</small> {window.l('LEXIA')}</div>
+										}
+										{
+											currentLang == 'is' &&
+											<div>{window.l('LEXIA')}<small>{window.l('-orðabókin')}</small></div>
+										}
+										<div className="smaller">Árnastofnun</div>
+									</div>
 
-								<h1 className="h2">
-									{
-										currentLang == 'fr' &&
-										<span><small>{window.l('Le dictionnaire')}</small> {window.l('LEXIA')}</span>
-									}
-									{
-										currentLang == 'is' &&
-										<span>{window.l('LEXIA')}<small>{window.l('-orðabókin')}</small></span>
-									}
-									<img src={logo} className="mr-4 hidden-mobile" alt="Árnastofnun" title="Árnastofnun" />
-								</h1>
+								</div>
 
 								<a href="https://vigdis.hi.is/" className="logo-vigdis">
 									{
