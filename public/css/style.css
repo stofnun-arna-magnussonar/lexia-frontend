@@ -3,7 +3,7 @@ body {
 }
 .header {
   padding: 20px;
-  background: #002ab3;
+  background: #002AB3;
   color: #fff;
   z-index: 10;
   -webkit-transition: padding 200ms ease-in-out;
@@ -24,6 +24,7 @@ body {
   font-size: 1.9rem;
   font-weight: 500;
   line-height: 30px;
+  align-items: center;
 }
 @media screen and (max-width: 550px) {
   .header .logo-wrapper {
@@ -63,18 +64,18 @@ body {
 }
 .header .menu-links a:hover {
   background: #ffffffa1;
-  color: #002ab3;
+  color: #002AB3;
 }
 .header .menu-links a.active {
   background: #fff;
-  color: #002ab3;
+  color: #002AB3;
 }
 h2 {
-  color: #002ab3;
+  color: #002AB3;
   font-size: 1.5rem;
 }
 h3 {
-  color: #002ab3;
+  color: #002AB3;
   font-size: 1.3rem;
 }
 .container {
@@ -92,15 +93,15 @@ h3 {
   border-radius: 0;
 }
 .btn-primary {
-  background-color: #002ab3;
-  border-color: #002ab3;
+  background-color: #002AB3;
+  border-color: #002AB3;
 }
 .btn-primary:hover {
   background-color: #0036e6;
   border-color: #0030cc;
 }
 .btn-info {
-  color: #002ab3;
+  color: #002AB3;
   border-radius: 3px;
   background: #f7f7f7;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -108,8 +109,8 @@ h3 {
 .btn-info:hover,
 .btn-info:active,
 .btn-info:focus {
-  background-color: #002ab3 !important;
-  border-color: #002ab3 !important;
+  background-color: #002AB3 !important;
+  border-color: #002AB3 !important;
 }
 a:not([class]) {
   text-decoration: underline;
@@ -119,7 +120,7 @@ a:not([class]):hover {
   color: #7a7a7a;
 }
 .nav-link {
-  color: #002ab3;
+  color: #002AB3;
   cursor: pointer;
   -webkit-transition: all 200ms ease-in-out;
   -o-transition: all 200ms ease-in-out;
@@ -133,20 +134,20 @@ a:not([class]):hover {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link,
 .badge-primary {
-  background-color: #002ab3;
+  background-color: #002AB3;
   box-shadow: 0 1px 2px #00000057;
 }
 .nav-pills .nav-link.active:hover,
 .nav-pills .show > .nav-link:hover,
 .badge-primary:hover {
-  background-color: #002ab3;
+  background-color: #002AB3;
 }
 .nav-pills .nav-link:hover {
   background-color: #cdcdcd;
 }
 .list-group-item.active {
   border-color: rgba(0, 0, 0, 0.125);
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
 }
 .list-group .container {
   margin-top: 0;
@@ -160,11 +161,11 @@ a:not([class]):hover {
   border-radius: 0;
 }
 .card.gray {
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
   border: 0;
 }
 .card.info-red-card {
-  background: #002ab3;
+  background: #002AB3;
   border-radius: 3px;
   box-shadow: 0 2px 1px #0000002b;
   color: #fff;
@@ -213,7 +214,7 @@ a:not([class]):hover {
   transition: all 200ms ease-in-out;
 }
 .card.info-red-card .sub-info a {
-  color: #002ab3;
+  color: #002AB3;
 }
 .card.info-red-card .sub-info.visible {
   max-height: 2000px;
@@ -233,14 +234,14 @@ a:not([class]):hover {
   width: 100%;
 }
 .card .card-body table thead {
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
 }
 .card .card-body table thead td,
 .card .card-body table thead th {
   padding: 10px 0;
 }
 .card .card-body table tr {
-  border-bottom: 1px solid #f3f3f3;
+  border-bottom: 1px solid #F3F3F3;
 }
 .card .card-body table tr td {
   padding: 7px 0;
@@ -309,7 +310,7 @@ a:not([class]):hover {
   right: 0;
   width: 100%;
   height: 4px;
-  background: #002ab3;
+  background: #002AB3;
 }
 .card.collapsible-card .menu-button span,
 .card.mobile-menu .menu-button span {
@@ -356,7 +357,7 @@ a:not([class]):hover {
   color: #474747;
 }
 .autocomplete-input .autocomplete-list a:hover {
-  background: #f3f3f3;
+  background: #F3F3F3;
 }
 @media screen and (max-width: 550px) {
   .autocomplete-input.open {
@@ -365,7 +366,7 @@ a:not([class]):hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #f3f3f3;
+    background: #F3F3F3;
     z-index: 10;
     -webkit-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
@@ -487,17 +488,17 @@ a:not([class]):hover {
 }
 .app-menu .menu-links {
   margin-bottom: 20px;
-  border-top: 1px solid #f3f3f3;
+  border-top: 1px solid #F3F3F3;
 }
 .app-menu .menu-links a {
   display: block;
   padding: 5px 0;
-  border-bottom: 1px solid #f3f3f3;
+  border-bottom: 1px solid #F3F3F3;
   text-decoration: none;
-  color: #002ab3;
+  color: #002AB3;
 }
 .app-menu .menu-links a.active {
-  color: #002ab3;
+  color: #002AB3;
   font-weight: bold;
 }
 .hamburger-icon {
@@ -645,7 +646,7 @@ body {
   }
 }
 .app-wrapper {
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
 }
 .app-wrapper > .container {
   margin-top: 0;
@@ -693,7 +694,7 @@ body {
   line-height: 36px;
   box-shadow: 0 0px 0px #00000000;
   border-radius: .25rem;
-  background: #002ab3;
+  background: #002AB3;
   -webkit-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
@@ -711,7 +712,7 @@ textarea {
   left: 0;
   right: 0;
   padding: 45px 20px 40px 20px;
-  background: #f3f3f3;
+  background: #F3F3F3;
   box-shadow: 0 0 0;
   color: #fff;
   z-index: 10;
@@ -799,10 +800,10 @@ textarea {
 }
 .search-container .lang-menu a:hover {
   background: #ffffffa1;
-  color: #002ab3;
+  color: #002AB3;
 }
 .search-container .lang-menu a.active {
-  background: #002ab3;
+  background: #002AB3;
   box-shadow: 0 1px 2px #00000057;
   color: #fff;
 }
@@ -841,7 +842,7 @@ textarea {
   right: 0;
   width: 100%;
   padding: 20px 0;
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   text-align: center;
   z-index: 10;
@@ -867,13 +868,13 @@ textarea {
   text-decoration: none;
 }
 .dictionary-list .list-group-item a:hover {
-  border-bottom: 1px solid #002ab3;
+  border-bottom: 1px solid #002AB3;
 }
 .dictionary-list .list-group-item .fletta {
   font-size: 1.2rem;
 }
 .dictionary-list .list-group-item .fletta strong {
-  color: #002ab3;
+  color: #002AB3;
 }
 .dictionary-list .list-group-item .results-example {
   display: inline;
@@ -885,13 +886,13 @@ textarea {
   font-size: 0.8rem;
 }
 .dictionary-list .list-group-item .results-example strong {
-  color: #002ab3;
+  color: #002AB3;
   font-weight: 500;
 }
 .dictionary-list .list-group-item .results-example .example-item {
   display: inline;
   margin-right: 20px;
-  color: #002ab3;
+  color: #002AB3;
   font-style: italic;
 }
 .dictionary-list .list-group-item .results-example .example-item strong {
@@ -941,7 +942,7 @@ textarea {
   text-decoration: underline;
   cursor: pointer;
   background-image: url('../img/icon-external-link.png');
-  color: #002ab3;
+  color: #002AB3;
 }
 .dictionary-entry .dict-view .dict-framb audio {
   display: none;
@@ -954,7 +955,7 @@ textarea {
   text-decoration: underline;
   cursor: pointer;
   background-image: url('../img/icon-play.png');
-  color: #002ab3;
+  color: #002AB3;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -988,7 +989,7 @@ textarea {
   margin-left: 15px;
 }
 .dictionary-entry .dict-view .dict-daemi .daemi {
-  color: #002ab3;
+  color: #002AB3;
   font-style: italic;
 }
 .dictionary-entry .dict-view .dict-daemi .daemi-translation {
@@ -1021,7 +1022,7 @@ textarea {
 }
 .dictionary-entry .dict-view .dict-osamband .osamband,
 .dictionary-entry .dict-view .dict-sohaus .osamband {
-  color: #002ab3;
+  color: #002AB3;
   font-weight: bold;
   font-style: italic;
 }
@@ -1088,7 +1089,7 @@ textarea {
   border-radius: 3px;
   color: #505050;
   background-color: #fafafa;
-  border-color: #f3f3f3;
+  border-color: #F3F3F3;
 }
 .site-footer {
   margin-top: 0;
