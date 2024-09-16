@@ -195,14 +195,12 @@ class TermViewContainer extends Component {
 
 								*/}
 
-								{/*
 								<div className="nav nav-pills">
 									<div className="navbar-text text-secondary mr-4 mb-2 d-none d-sm-block">{window.l('Orðabók')}: </div>
 									{
 										langButtons
 									}
 								</div>
-								*/}
 
 								<div className={'dictionary-entry card flex-grow-1'}>
 									<div className={'card-body'}>
