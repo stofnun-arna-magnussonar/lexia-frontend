@@ -193,6 +193,10 @@ class App extends Component {
 											currentLang == 'is' &&
 											<div>{window.l('LEXIA')}<small>{window.l('-orðabókin')}</small></div>
 										}
+										{
+											currentLang == 'de' &&
+											<div>{window.l('LEXIA')}<small>{window.l('-orðabókin')}</small></div>
+										}
 									</div>
 
 								</div>
@@ -204,6 +208,10 @@ class App extends Component {
 									}
 									{
 										currentLang == 'is' &&
+										<img src={logoVigdisIs} />
+									}
+									{
+										currentLang == 'de' &&
 										<img src={logoVigdisIs} />
 									}
 								</a>
