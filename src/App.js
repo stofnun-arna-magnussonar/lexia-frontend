@@ -22,6 +22,7 @@ import islexHelper from "./islexHelper";
 import logo from './img/logo-single.png';
 import logoVigdisIs from './img/logo-vigdis-white-is.png';
 import logoVigdisFr from './img/logo-vigdis-white-fr.png';
+import logoVinarborg from './img/logo-vinarborg.png';
 
 window.islexHelper = islexHelper;
 
@@ -214,6 +215,10 @@ class App extends Component {
 										currentLang == 'de' &&
 										<img src={logoVigdisIs} />
 									}
+								</a>
+
+								<a href="https://www.univie.ac.at/" className="logo-vinarborg">
+									<img src={logoVinarborg} />
 								</a>
 
 								<PageMenu className="hidden-mobile" lang={currentLang} />

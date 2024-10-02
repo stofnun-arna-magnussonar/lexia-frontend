@@ -632,16 +632,34 @@ body {
   .header .logo-vigdis {
     display: block;
     position: absolute;
-    right: 140px;
-    top: 0;
+    right: 152px;
+    top: -5px;
   }
 }
 .header .logo-vigdis img {
-  max-width: 230px;
+  max-width: 205px;
 }
 @media screen and (max-width: 1000px) {
   .header .logo-vigdis img {
     max-width: 200px;
+    margin-top: 20px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .header .logo-vinarborg {
+    display: block;
+    position: absolute;
+    right: 204px;
+    top: 55px;
+  }
+}
+.header .logo-vinarborg img {
+  max-width: 150px;
+}
+@media screen and (max-width: 1000px) {
+  .header .logo-vinarborg img {
+    max-width: 132px;
+    margin-left: 10px;
     margin-top: 20px;
   }
 }
@@ -1104,7 +1122,7 @@ textarea {
 }
 .site-footer .logos img {
   max-height: 70px;
-  max-width: 90vw;
+  max-width: 160px;
   margin: 0 20px 20px 20px;
 }
 .site-footer .footer-text {
