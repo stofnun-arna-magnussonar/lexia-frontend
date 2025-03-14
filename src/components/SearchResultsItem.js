@@ -9,7 +9,13 @@ class SearchResultsItem extends Component {
 	}
 
 	formatHighlightedText(text) {
-		return text.split('<').join('&lt;').split('>').join('&gt;').split('[').join('<').split(']').join('>');
+		if (this.props.leitarsvid && this.props.leitarsvid == 'texti' && this.props.searchString) {
+			return text.split('<').join('&lt;').split('>').join('&gt;').split('[').join('<').split(']').join('>').split(this.props.searchString).join('<strong>'+this.props.searchString+'</strong>');
+		}
+		else {
+			return text;
+		}
+		//text.split('<').join('&lt;').split('>').join('&gt;').split('[').join('<').split(']').join('>');
 	}
 
 	render() {
@@ -17,45 +23,7 @@ class SearchResultsItem extends Component {
 
 		let currentLang = window.currentLang || 'is';
 
-		if (dataItem.highlight) {
-			if (dataItem.highlight['items.texti']) {
-				dataItem.highlight['items.texti'] = _.uniq(dataItem.highlight['items.texti'])
-			}
-		}
-
-		// Passa upp á að inner hits innihaldi ekki tvöfaldar færslur
-		if (dataItem.inner_hits && dataItem.inner_hits['text_hits'] && dataItem.inner_hits['text_hits']['hits']['hits']) {
-			dataItem.inner_hits['text_hits']['hits']['hits'] = _.uniq(dataItem.inner_hits['text_hits']['hits']['hits'], function(hitItem) {
-				return hitItem._source.texti+':'+hitItem._source.teg;
-			})
-		}
-
-		// Passa upp á að inner hits innihaldi ekki tvöfaldar færslur
-		if (dataItem.inner_hits && dataItem.inner_hits['phrase_hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits']) {
-			dataItem.inner_hits['phrase_hits']['hits']['hits'] = _.uniq(dataItem.inner_hits['phrase_hits']['hits']['hits'], function(hitItem) {
-				return hitItem._source.texti;
-			})
-		}
-
-
-		// Passa upp á að text_hits og phrase_hits innihaldi ekki sömu færslur
-		if (dataItem.inner_hits && dataItem.inner_hits['text_hits'] && dataItem.inner_hits['text_hits']['hits']['hits'] && dataItem.inner_hits['phrase_hits'] && dataItem.inner_hits['phrase_hits']['hits']['hits']) {
-			let phraseHitsWouthoutTextHits = [];
-
-			dataItem.inner_hits['text_hits']['hits']['hits'] = _.filter(dataItem.inner_hits['text_hits']['hits']['hits'], function(item) {
-				return !_.findWhere(dataItem.inner_hits['phrase_hits']['hits']['hits'], {_id: item._id});
-			});
-
-			
-		}
-
-		let flettaEl;
-		if (dataItem.highlight && dataItem.highlight.fletta) {
-			flettaEl = <span className="fletta" dangerouslySetInnerHTML={{__html: this.formatHighlightedText(dataItem.highlight.fletta[0])}}></span>;
-		}
-		else {
-			flettaEl = <span className="fletta">{dataItem.fletta}</span>;
-		}
+		let flettaEl = <span className="fletta">{dataItem.fletta}</span>;
 
 		return (
 			<React.Fragment>
@@ -69,11 +37,11 @@ class SearchResultsItem extends Component {
 						<div className="results-example ordmynd">Orðmynd: <span className="comma-list" dangerouslySetInnerHTML={{__html: this.formatHighlightedText('[span class="d-none"]'+dataItem.highlight.ordmyndir[0]+'[/span]')}} /></div>
 					}
 					{
-						dataItem.highlight && dataItem.highlight['items.texti'] &&
+						this.props.leitarsvid && this.props.leitarsvid == 'texti' &&
 						<div className="results-example">
 							{
-								dataItem.highlight['items.texti'].map(function(textItem, index) {
-									return <div key={index} className="example-item" dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItem)}} />;
+								dataItem.items.map(function(textItem, index) {
+									return <div key={index} className="example-item" dangerouslySetInnerHTML={{__html: this.formatHighlightedText(textItem.texti)}} />;
 								}.bind(this))
 							}
 						</div>

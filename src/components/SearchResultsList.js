@@ -14,10 +14,13 @@ class SearchResultsList extends Component {
 	constructor(props) {
 		super(props);
 
-		this.url = config.apiRoot+'/api/es/flettur/';
+		this.url = config.apiRoot+'/api/flettur_v4/';
+		//this.url = config.apiRoot+'/api/es/flettur/';
 
 		this.state = {
-			listData: []
+			listData: [],
+			fetching: false,
+			found: false
 		};
 	}
 
@@ -41,18 +44,19 @@ class SearchResultsList extends Component {
 	}
 
 	fetchData() {
-		if (this.fetching) {
+		if (this.state.fetching) {
 			return;
 		}
 
-		this.fetching = true;
+		this.setState({
+			fetching: true
+		});
 
 		// Sæki gögn til APA
-		let urlParams = [
-			'simple=true'
-		];
+		let urlParams = [];
+
 		if (this.props.match.params.searchString) {
-			urlParams.push('leit='+(this.props.match.params.searchString.split('_').join('?')));
+			urlParams.push('search='+(this.props.match.params.searchString.split('_').join('?')));
 		}
 		if (this.props.match.params.fletta) {
 			urlParams.push('fletta='+(this.props.match.params.fletta.split('_').join('?')));
@@ -71,7 +75,7 @@ class SearchResultsList extends Component {
 		}
 
 		if (this.props.match.params.leitarsvid && this.props.match.params.leitarsvid == 'texti') {
-			urlParams.push('searchText=true');
+			urlParams.push('search_text=true');
 		}
 
 		let currentLang = window.currentLang || 'is';
@@ -98,6 +102,7 @@ class SearchResultsList extends Component {
 					this.setState({
 						listData: json.results,
 						found: false,
+						fetching: false,
 						searchString: this.props.match.params.searchString,
 						ordabok: this.props.match.params.ordabok
 
@@ -106,8 +111,9 @@ class SearchResultsList extends Component {
 				else {
 					this.setState({
 						listData: json.results,
-						total: json.metadata.total,
+						total: json.count,
 						found: true,
+						fetching: false,
 						searchString: this.props.match.params.searchString,
 						ordabok: this.props.match.params.ordabok
 
@@ -173,10 +179,10 @@ class SearchResultsList extends Component {
 							this.state.listData.length > 0 ?
 							this.state.listData.map(function(item, index) {
 								return <tr key={index} className="list-group-item dictionary-entry">
-									<SearchResultsItem order={this.props.match.params.order} data={item} />
+									<SearchResultsItem order={this.props.match.params.order} leitarsvid={this.props.match.params.leitarsvid} searchString={this.props.match.params.searchString} data={item} />
 								</tr>;
 							}.bind(this)) :
-								!this.state.found &&
+								!this.state.found && !this.state.fetching &&
 								<li key="-1" className="list-group-item text-center">
 									<div className="h5 mt-3 mb-4">{this.props.match.params.searchString ? window.l('Engar leitarniðurstöður fyrir')+' \''+this.props.match.params.searchString+'\'' : window.l('Ekkert fannst')}</div>
 									<SearchSuggestion searchString={this.props.match.params.searchString} />

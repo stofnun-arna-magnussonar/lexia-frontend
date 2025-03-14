@@ -10,7 +10,10 @@ class SimilarTerms extends Component {
 	constructor(props) {
 		super(props);
 
-		this.url = config.apiRoot+'/api/es/similar/';
+		//this.url = config.apiRoot+'/api/es/similar/';
+		this.url = '//islenskordabok.arnastofnun.is/similar/'
+
+		//this.url = '/similar/';
 
 		this.fetchDelay = 100;
 
@@ -57,7 +60,7 @@ class SimilarTerms extends Component {
 
 		this.fetching = true;
 
-		fetch(this.url+'?fletta='+this.props.fletta+'&ofl='+this.props.ofl)
+		fetch(this.url+this.props.fletta+'-'+this.props.ofl.split(' ').join('-')+'.json')
 			.then(function(response) {
 				return response.json();
 			})
@@ -65,7 +68,7 @@ class SimilarTerms extends Component {
 				this.fetching = false;
 
 				this.setState({
-					listData: json.results
+					listData: json.similar
 				});
 			}.bind(this));
 	}

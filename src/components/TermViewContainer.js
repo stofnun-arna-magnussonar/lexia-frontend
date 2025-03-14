@@ -14,7 +14,8 @@ class TermViewContainer extends Component {
 	constructor(props) {
 		super(props);
 
-		this.url = config.apiRoot+'/api/es/fletta/';
+		this.url = config.apiRoot+'/api/flettur_v4/';
+		//this.url = config.apiRoot+'/api/es/fletta/';
 
 		this.state = {
 			found: true

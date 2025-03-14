@@ -196,7 +196,7 @@ class SearchBox extends Component {
 					<AutocompleteInput inputClassName="form-control"
 						ref="searchInput"
 						responseDataField="results"
-						searchUrl={config.apiRoot+'/api/es/flettur/?fletta=$s*&simple=true'}
+						searchUrl={config.apiRoot+'/api/flettur_v4/?search=$s*&simple=true'}
 						onChange={this.inputChangeHandler}
 						inputName="searchBoxInput"
 						value={this.state.searchBoxInput}
