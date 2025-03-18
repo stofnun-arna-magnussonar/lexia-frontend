@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "00b2d959ac6fb3bba1b7",
+    "revision": "5c88ed3c450afffa8913",
     "url": "//lexia.arnastofnun.is/static/css/main.bdde4e78.chunk.css"
   },
   {
-    "revision": "00b2d959ac6fb3bba1b7",
-    "url": "//lexia.arnastofnun.is/static/js/main.36481a46.chunk.js"
+    "revision": "5c88ed3c450afffa8913",
+    "url": "//lexia.arnastofnun.is/static/js/main.23f03758.chunk.js"
   },
   {
     "revision": "45488cd6dc851f0f9674",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "//lexia.arnastofnun.is/static/media/logo-vinarborg.ee47aa55.png"
   },
   {
-    "revision": "400414e5a2c223068345aa6776705722",
+    "revision": "a2d8faa467fbe5c9f4c87401f3891ad0",
     "url": "//lexia.arnastofnun.is/index.html"
   }
 ];
