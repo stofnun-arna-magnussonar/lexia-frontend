@@ -91,7 +91,6 @@ class TermItemView extends Component {
 				return termItemView;
 			}.bind(this)) : [];
 		
-			console.log(type)
 		if (type == 'STRIK') {
 			el = <hr data-type={type} data-itid={dataItem.itid} />;
 		}
