@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "//lexia.arnastofnun.is/static/media/logo-vinarborg.ee47aa55.png"
   },
   {
-    "revision": "b4c8735a111fcb5d7b8578f20a39f85e",
+    "revision": "8c7e8065668e8f68816dbf4a0bfe7e39",
     "url": "//lexia.arnastofnun.is/index.html"
   }
 ];
