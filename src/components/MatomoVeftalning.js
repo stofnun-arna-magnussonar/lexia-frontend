@@ -11,7 +11,7 @@ class MatomoVeftalning extends React.Component {
 				return;
 			}
 
-			_paq.push(['setCustomUrl', '/' + location.pathname+location.search]);
+			_paq.push(['setCustomUrl', ('/'+location.pathname+location.search).replace('//', '/')]);
 			_paq.push(['setDocumentTitle', document.title]);
 			_paq.push(['trackPageView']);
 		}
