@@ -23,6 +23,7 @@ import logo from './img/logo-single.png';
 import logoVigdisIs from './img/logo-vigdis-white-is.png';
 import logoVigdisFr from './img/logo-vigdis-white-fr.png';
 import logoVinarborg from './img/logo-vinarborg.png';
+import MatomoVeftalning from './components/MatomoVeftalning';
 
 window.islexHelper = islexHelper;
 
@@ -300,6 +301,7 @@ class App extends Component {
 					<GoogleAnalytics />
 						*/
 					}
+					<MatomoVeftalning />
 
 				</React.Fragment>
 			</Router>
