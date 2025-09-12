@@ -9,7 +9,7 @@ class TermItemView extends Component {
 	renderAudioEl(dataItem) {
 		let audioFormats = dataItem.texti.split('\t')[0].split(',');
 
-		let audioUrl = config.audioUrl+Math.floor(dataItem.flid/1000)+'/'+dataItem.itid;
+		let audioUrl = config.audioUrl+dataItem.otexti;
 
 		return <div className="dict-item dict-framb">
 			<audio ref="audioControl" controls>

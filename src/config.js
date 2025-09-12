@@ -8,7 +8,7 @@ export default {
 	//islexRoot: 'http://130.208.108.18:8000',
 	islexRoot: '//islex.arnastofnun.is/django',
 
-	audioUrl: '//islex.arnastofnun.is/islex-files/audio/',
+	audioUrl: '//islenskordabok.arnastofnun.is/kata-files/audio/',
 	//imageUrl: '//islex.arnastofnun.is/islex-files/myndir/',
 	imageUrl: '//ymsir.arnastofnun.is/lexia/myndir/',
 
