@@ -294,34 +294,29 @@ class TermItemView extends Component {
 			</React.Fragment>;
 		}
 		else if (type == 'VÍSUN') {
-			let visunUrl;
-			let visunLink;
+			let parts = dataItem.texti.match(/([0-9]+)? ?([^,]+), ([^:]+):?([^\t]+)?(, )?([^\t]+)?\t?(.+)?/);
 
-			let formatUrlFrag = function(urlFrag) {
-				return (urlFrag.split(' ').length > 1 && !isNaN(urlFrag.split(' ')[0]) ? urlFrag.split(' ')[1] : urlFrag);
+			try {
+
+				let linkText = parts[4] || parts[2];
+				let linkEl;
+
+				if (linkText.indexOf(', ') > -1) {
+					linkEl = <React.Fragment>{(parts[7] ? parts[7]+' ' : '')+linkText.split(', ')[0]+(parts[1] && !parts[4] ? ' '+parts[1] : '')}, {islexHelper.formatOfl(linkText.split(', ')[1])}</React.Fragment>;
+				}
+				else {
+					linkEl = (parts[7] ? parts[7]+' ' : '')+linkText+(parts[1] && !parts[4] ? ' '+parts[1] : '');
+				}
+
+				el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-visun dict-link mt-3">
+					<Link to={'/'+currentLang+'/leit/'+parts[2]+(parts[3] ? '/ofl/'+parts[3].replace('/', ' ').split(' ')[0] : '')+(parts[1] ? '/rnum/'+parts[1] : '')+'?synafyrstu'}>
+						{linkEl}
+					</Link>
+				</div>;
 			}
-
-			if (dataItem.texti.indexOf(':') > -1) {
-				let visunParts = dataItem.texti.split(':');
-				let visunUrlFrags = visunParts[0].split(', ');
-				let visunLinkFrags = visunParts[1].split('\t');
-
-				visunUrl = formatUrlFrag(visunUrlFrags[0])+
-					(visunUrlFrags[1] ? '/ofl/'+visunUrlFrags[1].split(' ')[0] : '')+
-					(visunUrlFrags[0].split(' ').length > 1 && !isNaN(visunUrlFrags[0].split(' ')[0]) ? '/rnum/'+visunUrlFrags[0].split(' ')[0] : '');
-				visunLink = visunLinkFrags[1]+' '+visunLinkFrags[0];
+			catch {
+				el = <div>{dataItem.texti}</div>
 			}
-			else {
-				let visunFrags = dataItem.texti.split(', ');
-
-				visunUrl = formatUrlFrag(visunFrags[0])+
-					(visunFrags[1] ? '/ofl/'+visunFrags[1].split(' ')[0] : '')+
-					(visunFrags[0].split(' ').length > 1 && !isNaN(visunFrags[0].split(' ')[0]) ? '/rnum/'+visunFrags[0].split(' ')[0] : '');
-				visunLink = <React.Fragment>{visunFrags[0]} {islexHelper.formatOfl(visunFrags[1])}</React.Fragment>;
-
-			}
-
-			el = <div data-type={type} data-itid={dataItem.itid} className="dict-item dict-visun dict-link mt-3"><Link to={'/'+currentLang+'/leit/'+visunUrl+'?synafyrstu'}>{visunLink}</Link></div>;
 		}
 		else {
 			let displayLang;
