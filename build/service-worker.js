@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "//lexia.arnastofnun.is/precache-manifest.62b298749a3ee5ab4e92df4417a141f3.js"
+  "//lexia.arnastofnun.is/precache-manifest.dcd6deb95024e6a297b5ff396e21ca1d.js"
 );
 
 workbox.clientsClaim();

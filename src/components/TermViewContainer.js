@@ -213,6 +213,26 @@ class TermViewContainer extends Component {
 											<SimilarTerms fletta={dataItem.fletta} ofl={dataItem.ofl} />
 										}
 
+										{
+											this.state.data.changed && this.state.data.changed.made && (() => {
+												try {
+													let d = (new Date(this.state.data.changed.made));
+													
+													return <div className="text-right text-secondary"><small>{window.l('Birt')} {(d.getMonth()+1)}/{d.getFullYear()}</small></div>
+												}
+												catch (e) {}
+											})()
+										}
+										{
+											this.state.data.changed && this.state.data.changed.changed && (() => {
+												try {
+													let d = (new Date(this.state.data.changed.changed));
+												
+													return <div className="text-right text-secondary"><small>{window.l('Síðast breytt')} {(d.getMonth()+1)}/{d.getFullYear()}</small></div>
+												}
+												catch (e) {}
+											})()
+										}
 									</div>
 
 								</div>
